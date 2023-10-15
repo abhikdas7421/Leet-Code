@@ -1,12 +1,29 @@
 class Solution {
 public:
-    string removeOccurrences(string s, string part) {
-        int pos = s.find(part);
+    void removeOccurrencesRE(string &s, string &part) {
 
-        while(pos != string::npos) {
-            s.erase(pos, part.length());
-            pos = s.find(part);
+        // base case
+        if(s.find(part) == string::npos) {
+            return;
         }
-        return s;
+
+        // let's solve 1 case
+        int pos = s.find(part);
+        
+        // part string has been located
+        // remove it
+        string left_part = s.substr(0, pos);
+        string right_part = s.substr(pos+part.size(), s.size());
+
+        s = left_part + right_part;  
+        
+
+        // RR
+        removeOccurrencesRE(s, part);  
+    }
+
+    string removeOccurrences(string s, string part) {
+       removeOccurrencesRE(s, part);
+       return s;
     }
 };
