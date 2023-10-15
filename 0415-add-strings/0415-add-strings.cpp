@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string addStringRE(string num1, int p1, string num2, int p2, int carry) {
+    string addStringRE(string &num1, int p1, string &num2, int p2, int &carry) {
         // base case
         if(p1 < 0 && p2 < 0 && carry == 0) {
             string ans = "";
@@ -27,8 +27,8 @@ public:
     }
 
     string addStrings(string num1, string num2) {
-        
-        string ans = addStringRE(num1, num1.size()-1, num2, num2.size()-1, 0);
+        int carry = 0;
+        string ans = addStringRE(num1, num1.size()-1, num2, num2.size()-1, carry);
         reverse(ans.begin(), ans.end());
         return ans;
         
