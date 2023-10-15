@@ -1,10 +1,9 @@
 class Solution {
 public:
-    string addStringRE(string &num1, int p1, string &num2, int p2, int &carry) {
+    void addStringRE(string &num1, int p1, string &num2, int p2, int &carry, string &ans) {
         // base case
         if(p1 < 0 && p2 < 0 && carry == 0) {
-            string ans = "";
-            return ans;
+            return;
         }
 
 
@@ -15,20 +14,16 @@ public:
         int digit = nSum % 10;
         carry = nSum/10;
 
-        string ans = "";
         ans.push_back(digit+'0');
 
         // RR
-        ans += addStringRE(num1, p1-1, num2, p2-1, carry);
-
-        return ans;
-
-
+        addStringRE(num1, p1-1, num2, p2-1, carry, ans);
     }
 
     string addStrings(string num1, string num2) {
         int carry = 0;
-        string ans = addStringRE(num1, num1.size()-1, num2, num2.size()-1, carry);
+        string ans = "";
+        addStringRE(num1, num1.size()-1, num2, num2.size()-1, carry, ans);
         reverse(ans.begin(), ans.end());
         return ans;
         
