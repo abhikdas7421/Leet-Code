@@ -1,13 +1,13 @@
 class Solution {
 public:
     void maxProfitRE(vector<int>& prices, int i, int &buy, int &sell, int &pl) {
-        // base case
+        // Base case
         if(i >= prices.size()) {
             return;
         }
 
 
-        // let's solve 1 case
+        // Let's solve 1 case
         if(prices[i] > sell) {
             sell = prices[i];
             pl = max(pl, sell-buy);
@@ -18,7 +18,7 @@ public:
         }
 
 
-        // rr
+        // RE
         maxProfitRE(prices, i+1, buy, sell, pl);
     }
 
@@ -26,7 +26,7 @@ public:
         int buy = INT_MAX;
         int sell = INT_MAX;
         int pl = 0;
-        
+
         maxProfitRE(prices, 0, buy, sell, pl);
 
         return pl;
