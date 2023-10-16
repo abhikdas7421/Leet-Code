@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void maxProfitRE(vector<int>& prices, int i, int &buy, int &sell, int &pl) {
+    void maxProfitRE(vector<int>& prices, int &i, int &buy, int &sell, int &pl) {
         // base case
         if(i >= prices.size()) {
             return;
@@ -19,14 +19,16 @@ public:
 
 
         // rr
-        maxProfitRE(prices, i+1, buy, sell, pl);
+        i++;
+        maxProfitRE(prices, i, buy, sell, pl);
     }
 
     int maxProfit(vector<int>& prices) {
         int buy = INT_MAX;
         int sell = INT_MAX;
         int pl = 0;
-        maxProfitRE(prices, 0, buy, sell, pl);
+        int i = 0;
+        maxProfitRE(prices, i, buy, sell, pl);
 
         return pl;
     }
