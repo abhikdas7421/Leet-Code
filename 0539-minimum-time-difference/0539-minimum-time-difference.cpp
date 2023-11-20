@@ -3,7 +3,7 @@ class Solution
     public:
         int toMinute(string time)
         {
-            // using in built function of ---> string to int
+            // using in-built function of ---> string to int
             // int h = stoi(time.substr(0, 2));
             // int m = stoi(time.substr(3, 2));
             
