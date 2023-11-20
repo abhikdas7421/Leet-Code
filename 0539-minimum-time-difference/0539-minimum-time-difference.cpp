@@ -3,8 +3,12 @@ class Solution
     public:
         int toMinute(string time)
         {
-            int h = ((time[0] - '0') *10) + (time[1] - '0');
-            int m = ((time[3] - '0') *10) + (time[4] - '0');
+            // using in built function of ---> string to int
+            int h = stoi(time.substr(0, 2));
+            int m = stoi(time.substr(3, 2));
+            
+            // int h = ((time[0] - '0') *10) + (time[1] - '0');
+            // int m = ((time[3] - '0') *10) + (time[4] - '0');
 
             int totalMinute = h *60 + m;
             
