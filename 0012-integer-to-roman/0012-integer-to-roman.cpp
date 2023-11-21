@@ -3,68 +3,20 @@ public:
     string intToRoman(int num) {
         string ans = "";
         
+        vector<string> symbol{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        vector<int> value{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        
+        
         while(num) {
-            if(num >= 1000) {
-                ans.push_back('M');
-                num -= 1000;
-            }
-            else if(num >= 900) {
-                ans.push_back('C');
-                ans.push_back('M');
-                num -= 900;
-            }
-            else if(num >= 500) {
-                ans.push_back('D');
-                num -= 500;
-            }
-            else if(num >= 400) {
-                ans.push_back('C');
-                ans.push_back('D');
-                num -= 400;
-            }
-            else if(num >= 100) {
-                ans.push_back('C');
-                num -= 100;
-            }
-            else if(num >= 90) {
-                ans.push_back('X');
-                ans.push_back('C');
-                num -= 90;
-            }
-            else if(num >= 50) {
-                ans.push_back('L');
-                num -= 50;
-            }
-            else if(num >= 40) {
-                ans.push_back('X');
-                ans.push_back('L');
-                num -= 40;
-            }
-            else if(num >= 10) {
-                ans.push_back('X');
-                num -= 10;
-            }
-            else if(num >= 9) {
-                ans.push_back('I');
-                ans.push_back('X');
-                num -= 9;
-            }
-            else if(num >= 5) {
-                ans.push_back('V');
-                num -= 5;
-            }
-            else if(num >= 4) {
-                ans.push_back('I');
-                ans.push_back('V');
-                num -= 4;
-            }
-            else if(num >= 1) {
-                ans.push_back('I');
-                num -= 1;
+            
+            for(int i = 0; i < value.size(); i++) {
+                if(num >= value[i]) {
+                    ans = ans+symbol[i];
+                    num -= value[i];
+                    break;
+                }
             }
         }
-        
         return ans;
-        
     }
 };
