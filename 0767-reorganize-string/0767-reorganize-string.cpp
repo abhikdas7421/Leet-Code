@@ -1,10 +1,16 @@
 class Solution {
 public:
     string reorganizeString(string s) {
+        int sz = s.size();
+        int len = (sz+1)/2;
         vector<int> mp(26, 0);
         
-        for(int i = 0; i < s.size(); i++) {
+        for(int i = 0; i < sz; i++) {
             mp[s[i]-'a']++;
+            
+            if(mp[s[i]-'a'] > len) {
+                return "";
+            }
         }
         
         int occNo = INT_MIN;
@@ -24,11 +30,11 @@ public:
             j += 2;
         }
         
-        if(occNo != 0) {
-            return "";
-        }
+        // if(occNo != 0) {
+        //     return "";
+        // }
         
-        mp[mostOccCh - 'a'] = 0;
+        mp[mostOccCh - 'a'] = occNo;
         
         for(int i = 0; i < 26; i++) {
             
