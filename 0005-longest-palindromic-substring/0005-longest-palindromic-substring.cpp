@@ -1,54 +1,37 @@
-class Solution
-{
-    public:
-        string expandAroundIndices(string &s, int i, int j)
-        {
-            int l = i;
-            int h = j;
-
-            while (l >= 0 && h < s.size() && s[l] == s[h])
-            {
-
-                l--;
-                h++;
-            }
-
-            string str = s.substr(l + 1, h - l - 1);
-
-            return str;
+class Solution {
+public:
+    string expandAlongIndex(string &s, int i, int j) {
+        string ans = "";
+        
+        while(i >= 0 && j < s.size() && s[i] == s[j]) {
+            i--;
+            j++;
         }
-
-        string longestPalindrome(string & s)
-        {
-
-            string ans = "";
-
-            for (int i = 0; i < s.size(); i++)
-            {
-                // O(n^2)
-                // odd
-
-                string oddStr = expandAroundIndices(s, i, i);
-                // cout << oddStr << endl;
-
-                // even
-
-                string evenStr = expandAroundIndices(s, i, i + 1);
-                // cout << evenStr << endl;
-
-                // compare size of oddStr, evenStr and ans
-                if (oddStr.size() > evenStr.size() && oddStr.size() > ans.size())
-                {
-
-                    ans = oddStr;
-                }
-                else if (evenStr.size() > ans.size())
-                {
-
-                    ans = evenStr;
-                }
+        
+        ans = s.substr(i+1, j-i-1);
+        
+        return ans;
+    }
+    
+    string longestPalindrome(string s) {
+        string ans = "";
+        
+        for(int i = 0; i < s.size(); i++) {
+            string oddStr = expandAlongIndex(s, i, i);
+            
+            string evenStr = expandAlongIndex(s, i, i+1);
+            
+            if(ans.size() > oddStr.size() && ans.size() > evenStr.size()) {
+                ans = ans;
             }
-
-            return ans;
+            else if(oddStr.size() > evenStr.size()) {
+                ans = oddStr;
+            }
+            else {
+                ans = evenStr;
+            }
         }
+        
+        return ans;
+    }
 };
