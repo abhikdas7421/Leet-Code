@@ -6,49 +6,28 @@ class Solution
             int count = 1;
             int index = 0;
 
-            for (int i = 1; i < chars.size(); i++)
+            for (int i = 1; i <= chars.size(); i++)
             {
-                if (chars[i] == chars[i - 1])
+                if (i < chars.size() && chars[i] == chars[i - 1])
                 {
                     count++;
                 }
                 else
                 {
-                    chars[index] = chars[i - 1];
-                    index++;
+                    chars[index++] = chars[i - 1];
 
                     if (count > 1)
                     {
                         string strCount = to_string(count);
 
-                        for (int j = 0; j < strCount.size(); j++)
-                        {
-                            chars[index] = strCount[j];
-                            index++;
+                        for(auto ch:strCount) {
+                            chars[index++] = ch;
                         }
                         count = 1;
                     }
                 }
             }
-            chars[index] = chars[chars.size() - 1];
-            index++;
-
-            if (count > 1)
-            {
-                string strCount = to_string(count);
-                for (int j = 0; j < strCount.size(); j++)
-                {
-                    chars[index] = strCount[j];
-                    index++;
-                }
-            }
-
             chars.resize(index);
-            // for (int i = 0; i < chars.size(); i++)
-            // {
-            //     cout << chars[i];
-            // }
-            // cout << endl;
             return index;
         }
 };
