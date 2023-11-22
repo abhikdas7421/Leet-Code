@@ -43,8 +43,8 @@ class Solution
                     }
                 }
             }
-            for(int i = 0; i < numRows; i++) {
-                ans += p[i];
+            for(auto str:p) {
+                ans += str;
             }
             
             return ans;
