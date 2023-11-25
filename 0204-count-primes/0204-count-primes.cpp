@@ -7,7 +7,8 @@ public:
         prime[0] = prime[1] = false;
         
         int ans = 0;
-        for(int i = 2; i <= sqrt(n); i++) {
+        int lim = sqrt(n);
+        for(int i = 2; i <= lim; i++) {
             
             if(prime[i]) {
                 // ans++;
@@ -21,7 +22,7 @@ public:
         
         for(int i = 2; i < n; i++) {
             if(prime[i]) {
-                ans++;
+                ++ans;
             }
         }
         
