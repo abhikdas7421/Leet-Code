@@ -1,15 +1,21 @@
 class Solution
 {
     public:
-
-        string removeOccurrences(string s, string part)
-        {
-            while (s.find(part) != string::npos)
-            {
-                int pos = s.find(part);
-                s.erase(pos, part.size());
+        void removeOccRE(string &s, string &part) {
+            auto pos = s.find(part);
+            if(pos == string::npos) {
+                return;
             }
-
+            
+            s.erase(pos, part.size());
+            
+            removeOccRE(s, part);
+            
+        }
+    
+        string removeOccurrences(string s, string part) {
+            removeOccRE(s, part);
+            
             return s;
         }
 };
