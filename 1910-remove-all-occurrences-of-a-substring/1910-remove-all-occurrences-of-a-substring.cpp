@@ -7,9 +7,10 @@ class Solution
                 return;
             }
             
-            string leftPart = s.substr(0, pos);
-            string rightPart = s.substr(pos+part.size());
-            s = leftPart + rightPart;
+            // string leftPart = s.substr(0, pos);
+            // string rightPart = s.substr(pos+part.size());
+            // s = leftPart + rightPart;
+            s.erase(pos, part.size());
             
             removeOccRE(s, part);
             
