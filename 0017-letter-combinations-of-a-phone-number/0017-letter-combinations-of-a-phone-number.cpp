@@ -2,7 +2,7 @@ class Solution
 {
     public:
     
-        void solve(string &digits, int index, vector<string> &mapping, vector<string> &ans, string &output) 
+        void solve(string &digits, int index, vector<string> &mapping, vector<string> &ans, string output) 
         {
             // base case
             if(index >= digits.length())
@@ -21,9 +21,7 @@ class Solution
             for(int i = 0; i < value.length(); i++) 
             {
                 // char ch = value[i];
-                output.push_back(value[i]);
-                solve(digits, index+1, mapping, ans, output);
-                output.pop_back();
+                solve(digits, index+1, mapping, ans, output+value[i]);
             }
         }
 
