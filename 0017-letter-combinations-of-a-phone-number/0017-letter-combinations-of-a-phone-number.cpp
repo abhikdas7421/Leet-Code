@@ -12,13 +12,16 @@ class Solution
             }
             
             // solve 1 case, rest will handle recursion
-            int digit = digits[index] - '0';
-            string value = mapping[digit];
+            
+            // int digit = digits[index] - '0';
+            // string value = mapping[digit];
+            
+            string value = mapping[digits[index] - '0'];
             
             for(int i = 0; i < value.length(); i++) 
             {
-                char ch = value[i];
-                solve(digits, index+1, mapping, ans, output+ch);
+                // char ch = value[i];
+                solve(digits, index+1, mapping, ans, output+value[i]);
             }
         }
 
