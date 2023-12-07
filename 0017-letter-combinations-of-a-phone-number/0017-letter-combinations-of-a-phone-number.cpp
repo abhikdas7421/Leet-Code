@@ -2,7 +2,7 @@ class Solution
 {
     public:
     
-        void solve(string digits, int index, vector<string> &mapping, vector<string> &ans, string output) 
+        void solve(string &digits, int index, vector<string> &mapping, vector<string> &ans, string output) 
         {
             // base case
             if(index >= digits.length())
