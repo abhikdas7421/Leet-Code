@@ -1,5 +1,7 @@
 class Solution {
 public:
+    // T.C -> O(nlogn)
+    // S.C -> O(logn)
     int maxSubArrayHelper(vector<int> &nums, int start, int end) {
         // base case
         if(start == end) return nums[start];
