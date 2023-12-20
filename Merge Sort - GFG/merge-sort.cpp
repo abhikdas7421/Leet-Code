@@ -22,9 +22,6 @@ class Solution
     void merge(int arr[], int s, int m, int e)
     {
         // Your code here
-        int i = s;
-        int j = m+1;
-        
         int len1 = m-s+1;
         int len2 = e-m;
         
