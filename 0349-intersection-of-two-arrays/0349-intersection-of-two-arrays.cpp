@@ -1,35 +1,25 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> h(1000, 0);
         vector<int> ans;
-        sort(nums1.begin(), nums1.end());
-        sort(nums2.begin(), nums2.end());
         
-        int i = 0, j = 0;
-        int n = nums1.size();
-        int m = nums2.size();
-        int lastEle = -1;
-        while(i < n && j < m) {
+        for(int i = 0; i < nums1.size(); i++) {
             
-            if(nums1[i] == nums2[j]) {
-                if(lastEle != nums1[i]) {
-                    ans.push_back(nums1[i]);
-                    lastEle = nums1[i];
-                }
-                i++;
-                j++;
+            if(h[nums1[i]] == 0) {
+                h[nums1[i]]++;
             }
-            else if(nums1[i] < nums2[j]) {
-                i++;
-            }
-            else if(nums1[i] > nums2[j]) {
-                j++;
+            
+        }
+        
+        for(int i = 0; i < nums2.size(); i++) {
+            if(h[nums2[i]] != 0) {
+                ans.push_back(nums2[i]);
+                h[nums2[i]]--;
             }
         }
-       
         
         return ans;
-        
         
     }
 };
