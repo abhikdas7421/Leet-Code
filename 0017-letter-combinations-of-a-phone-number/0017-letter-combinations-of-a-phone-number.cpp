@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void solve(string &digits, int index, vector<string> &ans, string output, vector<string> &mapping) {
+    void solve(string &digits, int index, vector<string> &ans, string &output, vector<string> &mapping) {
         // base case 
         if(index >= digits.size()) {
             ans.push_back(output);
@@ -10,8 +10,9 @@ public:
         string value = mapping[digits[index] - '0'];
         
         for(int i = 0; i < value.size(); i++) {
-            solve(digits, index+1, ans, output+value[i], mapping);
-            
+            output.push_back(value[i]);
+            solve(digits, index+1, ans, output, mapping);
+            output.pop_back();
         }
     }
     
