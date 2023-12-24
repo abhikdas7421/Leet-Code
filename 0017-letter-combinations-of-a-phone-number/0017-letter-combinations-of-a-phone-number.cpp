@@ -33,7 +33,9 @@ public:
         mapping[8] = "tuv";
         mapping[9] = "wxyz";
         
-        solve(digits, 0, ans, output, mapping);
+        int index = 0;
+        
+        solve(digits, index, ans, output, mapping);
         return ans;
     }
 };
