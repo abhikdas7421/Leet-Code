@@ -2,14 +2,12 @@ class Solution {
 public:
     void solve(vector<int>& nums, int i, vector<vector<int>> &ans) {
         // base case
-        if(i >= nums.size()) {
-            
+        if(i >= nums.size()) { 
             ans.push_back(nums);
             return;
         }
         
         for(int j = i; j < nums.size(); j++) {
-            
             if(j > i && nums[j] == nums[j-1]) continue;
             
             swap(nums[i], nums[j]);
@@ -25,13 +23,11 @@ public:
         solve(nums, 0, ans);
         
         set<vector<int>> temp;
-        
         for(auto it : ans) {
+            // T.C -> O(logn)
             temp.insert(it);
         }
-        
         ans.clear();
-        
         for(auto it : temp) {
             ans.push_back(it);
         }
