@@ -25,16 +25,17 @@ public:
         solve(nums, 0, ans);
         
         set<vector<int>> temp;
+        
         for(auto it : ans) {
             temp.insert(it);
         }
         
-        vector<vector<int>> finalAns;
+        ans.clear();
         
         for(auto it : temp) {
-            finalAns.push_back(it);
+            ans.push_back(it);
         }
         
-        return finalAns;
+        return ans;
     }
 };
