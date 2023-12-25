@@ -28,12 +28,12 @@ public:
     vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
         
         sort(candidates.begin(), candidates.end());
+        
         vector<vector<int>> ans;
         vector<int> v;
         int index = 0;
         
         solve(candidates, target, index, ans, v);
-        set<vector<int>> temp;
         
         return ans;
     }
