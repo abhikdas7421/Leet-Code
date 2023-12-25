@@ -9,6 +9,9 @@ public:
         }
         
         for(int j = i; j < nums.size(); j++) {
+            
+            if(j > i && nums[j] == nums[j-1]) continue;
+            
             swap(nums[i], nums[j]);
             solve(nums, i+1, ans);
             swap(nums[i], nums[j]);  
@@ -16,6 +19,7 @@ public:
     }
     
     vector<vector<int>> permuteUnique(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
         vector<vector<int>> ans;
         
         solve(nums, 0, ans);
