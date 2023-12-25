@@ -9,18 +9,16 @@ public:
         }
         
         for(int i = index; i < candidates.size(); i++ ) {
-            
-            
+    
             if(i > index && candidates[i] == candidates[i-1]) continue;
             
             if(candidates[i] > target) break;
             
-           
             v.push_back(candidates[i]);
             solve(candidates, target-candidates[i], i+1, ans, v);
-            v.pop_back();  
             
-           
+            //backtrack
+            v.pop_back();  
             
         }
     }
