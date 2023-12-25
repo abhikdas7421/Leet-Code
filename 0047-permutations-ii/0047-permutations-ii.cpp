@@ -7,8 +7,16 @@ public:
             return;
         }
         
+        unordered_map<int, bool> visited;
+        
         for(int j = i; j < nums.size(); j++) {
-            if(j > i && nums[j] == nums[j-1]) continue;
+            
+            if(visited.find(nums[j]) != visited.end()) {
+                
+                continue;
+            }
+            
+            visited[nums[j]] = true;
             
             swap(nums[i], nums[j]);
             solve(nums, i+1, ans);
@@ -22,15 +30,15 @@ public:
         
         solve(nums, 0, ans);
         
-        set<vector<int>> temp;
-        for(auto it : ans) {
-            // T.C -> O(logn)
-            temp.insert(it);
-        }
-        ans.clear();
-        for(auto it : temp) {
-            ans.push_back(it);
-        }
+        // set<vector<int>> temp;
+        // for(auto it : ans) {
+        //     // T.C -> O(logn)
+        //     temp.insert(it);
+        // }
+        // ans.clear();
+        // for(auto it : temp) {
+        //     ans.push_back(it);
+        // }
         
         return ans;
     }
