@@ -35,18 +35,6 @@ public:
         solve(candidates, target, index, ans, v);
         set<vector<int>> temp;
         
-//         for(auto it:ans) {
-            
-//             temp.insert(it);
-//         }
-        
-//         vector<vector<int>> finalAns;
-//         for(auto it:temp) {
-//             finalAns.push_back(it);
-//         }
-        
-//         return finalAns;
-        
         return ans;
     }
 };
