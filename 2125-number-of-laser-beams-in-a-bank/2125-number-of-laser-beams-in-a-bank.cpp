@@ -3,28 +3,29 @@ class Solution
     public:
         int numberOfBeams(vector<string> &bank)
         {
-            int r1 = 0;
-            int r2 = 0;
+            int prevRowCurr = 0;
+            int currRowCurr = 0;
             int numOfBeams = 0;
 
-            for (int i = 0; i < bank.size(); ++i)
+            for (auto s : bank)
             {
 
-                for (int j = 0; j < bank[i].size(); ++j)
+                for (auto c : s)
                 {
-                    if (bank[i][j] == '1')
+                    if (c == '1')
                     {
-                        ++r2;
+                        ++currRowCurr;
                     }
                 }
 
-                numOfBeams += (r1 *r2);
+                
 
-                if (r2 != 0)
+                if (currRowCurr != 0)
                 {
-                    r1 = r2;
+                    numOfBeams += (prevRowCurr * currRowCurr);
+                    prevRowCurr = currRowCurr;
                 }
-                r2 = 0;
+                currRowCurr = 0;
             }
 
             return numOfBeams;
