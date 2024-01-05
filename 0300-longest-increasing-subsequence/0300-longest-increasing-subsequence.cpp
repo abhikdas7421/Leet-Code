@@ -21,6 +21,9 @@ public:
     }
     
     int lengthOfLIS(vector<int>& nums) {
+        
+        if(nums.size() == 1) return 1;
+        
         int n = nums.size();
         vector<int> ans;
         ans.push_back(nums[0]);
