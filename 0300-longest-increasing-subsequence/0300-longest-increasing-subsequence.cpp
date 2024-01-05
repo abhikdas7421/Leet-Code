@@ -33,7 +33,9 @@ public:
                 ans.push_back(ele);
             }
             else {
-                int index = bs(ans, ele);
+                // int index = bs(ans, ele);
+                // You can also use inbuilt function lower_bound()
+                int index = lower_bound(ans.begin(), ans.end(), ele)-ans.begin();
                 ans[index] = ele;
             }
         }
