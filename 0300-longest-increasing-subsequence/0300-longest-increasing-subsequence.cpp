@@ -28,13 +28,13 @@ public:
         vector<int> ans;
         ans.push_back(nums[0]);
         
-        for(int i = 1; i < n; i++) {
-            if(nums[i] > ans.back()) {
-                ans.push_back(nums[i]);
+        for(auto ele : nums) {
+            if(ele > ans.back()) {
+                ans.push_back(ele);
             }
             else {
-                int index = bs(ans, nums[i]);
-                ans[index] = nums[i];
+                int index = bs(ans, ele);
+                ans[index] = ele;
             }
         }
         
