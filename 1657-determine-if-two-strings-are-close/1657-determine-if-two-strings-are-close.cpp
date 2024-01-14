@@ -8,8 +8,8 @@ public:
             return false;
         }
         
-        vector<int> freq1(26, 0);
-        vector<int> freq2(26, 0);
+        vector<int> freq1(26);
+        vector<int> freq2(26);
         
         for(int i = 0; i < n; i++) {
             int ch1 = word1[i];
