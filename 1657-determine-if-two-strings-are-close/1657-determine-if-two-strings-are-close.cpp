@@ -1,18 +1,22 @@
 class Solution {
 public:
     bool closeStrings(string word1, string word2) {
-        if(word1.size() != word2.size()) {
+        int n = word1.size();
+        int m = word2.size();
+        
+        if(n != m) {
             return false;
         }
         
         vector<int> freq1(26, 0);
         vector<int> freq2(26, 0);
         
-        for(auto ch : word1) {
-            freq1[ch-'a']++;
-        }
-        for(auto ch : word2) {
-            freq2[ch-'a']++;
+        for(int i = 0; i < n; i++) {
+            int ch1 = word1[i];
+            int ch2 = word2[i];
+            
+            freq1[ch1-'a']++;
+            freq2[ch2-'a']++;
         }
         
         for(int i = 0; i < 26; i++) {
