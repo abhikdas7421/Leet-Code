@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* findMid(ListNode* head) {
-        if(head == 0) {
+        if(head == 0 || head->next == 0) {
             return head;
         }
         ListNode* slow = head;
