@@ -18,7 +18,7 @@ class Solution {
 public:
     
     //Approach 1 :- Recursive Approach
-    Node* solve(Node* head, unordered_map<Node*, Node*> &mp) {
+    /* Node* solve(Node* head, unordered_map<Node*, Node*> &mp) {
         if(head == 0) return head;
         
         Node* newHead = new Node(head->val);
@@ -36,6 +36,7 @@ public:
         return solve(head, mp);
         
     }
+    */
     
     //Approach 2:- Iterative Approach
     /* Node* copyRandomList(Node* head) {
@@ -70,4 +71,41 @@ public:
         return newHead;
     }
     */
+    
+    // Approach 3 :- Withour using map
+    Node* copyRandomList(Node* head) {
+        if(!head) return 0;
+        
+        // Step 1 :- Clone A -> A'
+        Node* it = head; // Iterate over old head
+        while(it) {
+            Node* clonedNode = new Node(it->val);
+            clonedNode->next = it->next;
+            it->next = clonedNode;
+            it = it->next->next;
+        }
+        
+        // Step 2 :- Assign random links of A' with the help of old A
+        it = head;
+        while(it) {
+            Node *clonedNode = it->next;
+            clonedNode->random = it->random ? it->random->next : nullptr;
+            it = it->next->next;
+        }
+        
+        // Step 3 :- Detach A' from A
+        it = head;
+        Node* clonedHead = it->next;
+        while(it) {
+            Node *temp = it->next;
+            it->next = it->next->next;
+            
+            if(temp->next) {
+                temp->next = temp->next->next;
+            }
+            it = it->next;
+            
+        }
+        return clonedHead;
+    }
 };
