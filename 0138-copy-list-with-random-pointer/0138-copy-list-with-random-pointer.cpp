@@ -17,7 +17,7 @@ public:
 class Solution {
 public:
     
-    //Approach 1 :- Recursive Approach
+    //Approach 1 :- Recursive Approach || T.C = O(n) and S.C = O(n)
     /* Node* solve(Node* head, unordered_map<Node*, Node*> &mp) {
         if(head == 0) return head;
         
@@ -38,7 +38,7 @@ public:
     }
     */
     
-    //Approach 2:- Iterative Approach
+    //Approach 2:- Iterative Approach || T.C = O(n) and S.C = O(n)
     /* Node* copyRandomList(Node* head) {
         // dummy node
         Node *newHead = new Node(-1);
@@ -72,7 +72,7 @@ public:
     }
     */
     
-    // Approach 3 :- Withour using map
+    // Approach 3 :- Withour using map || T.C = O(n) and S.C = O(1)
     Node* copyRandomList(Node* head) {
         if(!head) return 0;
         
