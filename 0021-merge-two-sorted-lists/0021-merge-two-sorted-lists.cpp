@@ -8,29 +8,30 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        ListNode* temp1 = list1;
-        ListNode* temp2 = list2;
+        if(list1 == nullptr) return list2;
+        if(list2 == nullptr) return list1;
         
         // dummy node;
         ListNode* head = new ListNode(-1);
         ListNode* tail = head;
         
-        while(temp1 != nullptr && temp2 != nullptr) {
+        while(list1 != nullptr && list2 != nullptr) {
             
-            if(temp1->val < temp2->val) {
-                ListNode* temp = temp1;
-                temp1 = temp1->next;
+            if(list1->val < list2->val) {
+                ListNode* temp = list1;
+                list1 = list1->next;
                 temp->next = nullptr;
                 
                 tail->next = temp;
                 tail = temp;
             }
             else {
-                ListNode* temp = temp2;
-                temp2 = temp2->next;
+                ListNode* temp = list2;
+                list2 = list2->next;
                 temp->next = nullptr;
                 
                 tail->next = temp;
@@ -38,12 +39,12 @@ public:
             }
         }
         
-        if(temp1 != nullptr) {
-            tail->next = temp1;
+        if(list1 != nullptr) {
+            tail->next = list1;
         }
         
-        if(temp2 != nullptr) {
-            tail->next = temp2;
+        if(list2 != nullptr) {
+            tail->next = list2;
         }
         
         ListNode *dummy = head;
