@@ -16,37 +16,24 @@ public:
 
 class Solution {
 public:
-    Node* copyRandomList(Node* head) {
-        // dummy node
-        Node *newHead = new Node(-1);
-        Node* newTail = newHead;
+    
+    //Approach 1 :- Recursive Approach
+    Node* solve(Node* head, unordered_map<Node*, Node*> &mp) {
+        if(head == 0) return head;
         
-        unordered_map<Node*, Node*> mp;
+        Node* newHead = new Node(head->val);
+        mp[head] = newHead;
+        newHead->next = solve(head->next, mp);
         
-        Node* temp = head;
-        while(temp != 0) {
-            newTail->next = new Node(temp->val);
-            newTail = newTail->next;
-            
-            mp[temp] = newTail;
-            temp = temp->next;
+        if(head->random) {
+            newHead->random = mp[head->random];
         }
-        
-        // remove dummy node;
-        Node* dummy = newHead;
-        newHead = newHead->next;
-        dummy->next = 0;
-        
-        temp = head;
-        Node* newTemp = newHead;
-        while(temp != 0) {
-            newTemp->random = mp[temp->random];
-            temp = temp->next;
-            newTemp = newTemp->next;
-        }
-        
         return newHead;
-        
+    }
+    
+    Node* copyRandomList(Node* head) {
+        unordered_map<Node*, Node*> mp;
+        return solve(head, mp);
         
     }
 };
