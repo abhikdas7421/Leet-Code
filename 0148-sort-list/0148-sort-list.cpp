@@ -11,10 +11,13 @@
 class Solution {
 public:
     ListNode* findMid(ListNode* head) {
+        if(head == 0) {
+            return head;
+        }
         ListNode* slow = head;
-        ListNode* fast = head->next;
+        ListNode* fast = head;
         
-        while(fast && fast->next) {
+        while(fast->next != 0 && fast->next->next != 0) {
             slow = slow->next;
             fast = fast->next->next;
         }
