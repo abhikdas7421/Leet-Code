@@ -24,8 +24,10 @@ public:
         if(head == 0 || head->next == 0 || k == 0 || len == k) {
             return head;
         }
-       
+        
         int r =len - (k%len);
+       
+        
         
         ListNode* temp = head;
         int i = 1;
