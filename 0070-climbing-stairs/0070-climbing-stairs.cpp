@@ -6,14 +6,9 @@ public:
             return dp[n];
         }
         
-        if(dp[n] != 0) {
-            return dp[n];
-        }
+        if(dp[n] != 0) return dp[n];
         
-        int a = solve(n-1, dp);
-        int b = solve(n-2, dp);
-        
-        dp[n] = a+b;
+        dp[n] = solve(n-1, dp) + solve(n-2, dp);
         return dp[n];
     }
     
