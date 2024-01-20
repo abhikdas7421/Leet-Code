@@ -46,7 +46,6 @@ public:
             long left = (i-prev[i])%M;
             long right = (next[i] - i)%M;
             
-            // ans = ((ans%M) + (left*right*arr[i])%M)%M;
             ans += (left*right*arr[i])%M;
         }
         
