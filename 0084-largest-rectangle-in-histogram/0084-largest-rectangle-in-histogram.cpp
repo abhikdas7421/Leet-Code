@@ -47,7 +47,8 @@ public:
         for(int i = 0; i < n; i++) {
             int height = heights[i];
             int Width = next[i] - prev[i] - 1;
-            maxArea = max(maxArea, (height * Width));
+            int area = height * Width;
+            maxArea = max(maxArea, area);
         }
         
         return maxArea;
