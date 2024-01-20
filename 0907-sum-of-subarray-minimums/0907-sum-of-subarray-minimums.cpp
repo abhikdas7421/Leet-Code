@@ -37,20 +37,20 @@ public:
     }
     
     int sumSubarrayMins(vector<int>& arr) {
+        long ans = 0;
         int M = 1000000007;
         
         vector<int> next = nextSmallerIndex(arr);
         vector<int> prev = prevSmallerIndex(arr);
-        long int ans = 0;
         for(int i = 0; i < arr.size(); i++) {
-            long int left = (i-prev[i])%M;
-            long int right = (next[i] - i)%M;
+            long left = (i-prev[i])%M;
+            long right = (next[i] - i)%M;
             
-            ans = (ans%M) + (left*right*arr[i])%M;
+            // ans = ((ans%M) + (left*right*arr[i])%M)%M;
+            ans += (left*right*arr[i])%M;
         }
         
-        int finalAns = ans%M;
-        return finalAns;
+        return ans%M;
         
     }
 };
