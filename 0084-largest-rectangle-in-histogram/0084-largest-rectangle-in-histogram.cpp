@@ -41,16 +41,13 @@ public:
         int n = heights.size();
         int maxArea = 0;
         
-        vector<int> nextSmallerIndex = nextSmallerEle(heights);
-        vector<int> prevSmallerIndex = prevSmallerEle(heights);
+        vector<int> next = nextSmallerEle(heights);
+        vector<int> prev = prevSmallerEle(heights);
         
         for(int i = 0; i < n; i++) {
-            int next = nextSmallerIndex[i];
-            int prev = prevSmallerIndex[i];
-            
-            int currWidth = next - prev - 1;
-            int currArea = heights[i] * currWidth;
-            maxArea = max(maxArea, currArea);
+            int height = heights[i];
+            int Width = next[i] - prev[i] - 1;
+            maxArea = max(maxArea, (height * Width));
         }
         
         return maxArea;
