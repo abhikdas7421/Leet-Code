@@ -1,7 +1,7 @@
 class Solution {
 public:
     int longestValidParentheses(string s) {
-        int longLen = 0;
+        int maxLen = 0;
         
         stack<int> st;
         st.push(-1);
@@ -16,7 +16,7 @@ public:
                 
                 if(!st.empty()) {
                     int currLen = i - st.top();
-                    longLen = max(longLen, currLen);
+                    maxLen = max(maxLen, currLen);
                 }
                 else {
                     st.push(i);
@@ -25,6 +25,6 @@ public:
             
         }
         
-        return longLen;
+        return maxLen;
     }
 };
