@@ -46,9 +46,7 @@ public:
             long int left = (i-prev[i])%M;
             long int right = (next[i] - i)%M;
             
-            // ans += ((left*right*arr[i]) % M);
-            
-            ans = (ans%M) + (left*right*(arr[i]%M))%M;
+            ans = (ans%M) + (left*right*arr[i])%M;
         }
         
         int finalAns = ans%M;
