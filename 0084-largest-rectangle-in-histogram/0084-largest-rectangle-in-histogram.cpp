@@ -49,9 +49,7 @@ public:
             int prev = prevSmallerIndex[i];
             
             int currWidth = next - prev - 1;
-            
             int currArea = heights[i] * currWidth;
-            
             maxArea = max(maxArea, currArea);
         }
         
