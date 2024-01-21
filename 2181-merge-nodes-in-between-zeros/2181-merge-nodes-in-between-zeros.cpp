@@ -36,11 +36,11 @@ public:
         ListNode *temp = newLastNode->next;
         newLastNode->next = 0;
         
-//         while(temp) {
-//             ListNode* next = temp->next;
-//             delete temp;
-//             temp = next;
-//         }
+        while(temp) {
+            ListNode* next = temp->next;
+            delete temp;
+            temp = next;
+        }
         
         return head;
         
