@@ -20,6 +20,7 @@ public:
         int sum = 0;
         
         while(fast) {
+            
             if(fast->val != 0) {
                 sum += fast->val;
             }
