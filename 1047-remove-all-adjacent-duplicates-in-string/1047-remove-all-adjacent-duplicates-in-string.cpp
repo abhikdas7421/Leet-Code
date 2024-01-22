@@ -27,7 +27,7 @@ class Solution
         }
         */
         
-        // Approach :- 2
+        // Approach :- 2 (Using stack)
         string removeDuplicates(string s) {
             stack<char> st;
             string ans = "";
