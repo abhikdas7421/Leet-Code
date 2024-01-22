@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> findErrorNums(vector<int>& nums) {
+    vector<int> findErrorNums(vector<int>& nums) { // T.C -> O(n) || S.C -> O(1)
         int duplicate, missing;
         
         for(int i = 0; i < nums.size(); i++) {
