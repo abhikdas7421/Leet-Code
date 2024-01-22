@@ -1,7 +1,9 @@
 class Solution
 {
     public:
-        string removeDuplicates(string s)
+        
+        // Approach :- 1
+        /* string removeDuplicates(string s)
         {
             string ans = "";
             int i = 0;
@@ -22,5 +24,29 @@ class Solution
             }
 
             return ans;
+        }
+        */
+        
+        // Approach :- 2
+        string removeDuplicates(string s) {
+            stack<char> st;
+            string ans = "";
+            
+            for(auto ch : s) {
+                if(!st.empty() && ch == st.top()) {
+                    st.pop();
+                }
+                else {
+                   st.push(ch);
+                }
+            }
+            
+            while(!st.empty()) {
+                ans = st.top()+ans;
+                st.pop();
+            }
+            
+            return ans;
+            
         }
 };
