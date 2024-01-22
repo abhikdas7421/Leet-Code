@@ -1,21 +1,24 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        vector<int> hash(nums.size()+1, 0);
-        vector<int> ans(2);
+        int duplicate, missing;
+        
         for(int i = 0; i < nums.size(); i++) {
-            hash[nums[i]]++;
-        }
-        
-        for(int i = 1; i < hash.size(); i++) {
-            if(hash[i] > 1) {
-                ans[0] = i;
+            
+            if(nums[abs(nums[i])-1] < 0) {
+                duplicate = abs(nums[i]);
             }
-            else if(hash[i] == 0) {
-                ans[1] = i;
+            else{
+                nums[abs(nums[i])-1] *= -1;
             }
         }
         
-        return ans;
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums[i] > 0) {
+                missing = i+1;
+            }
+        }
+        
+        return {duplicate, missing};
     }
 };
