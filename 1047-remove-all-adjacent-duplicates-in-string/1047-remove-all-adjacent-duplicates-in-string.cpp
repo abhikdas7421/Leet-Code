@@ -30,8 +30,6 @@ class Solution
         // Approach :- 2 (Using stack)
         string removeDuplicates(string s) {
             stack<char> st;
-            string ans = "";
-            
             for(auto ch : s) {
                 if(!st.empty() && ch == st.top()) {
                     st.pop();
@@ -41,11 +39,14 @@ class Solution
                 }
             }
             
+            
+            string ans;
             while(!st.empty()) {
-                ans = st.top()+ans;
+                // ans = st.top()+ans;
+                ans += st.top();
                 st.pop();
             }
-            
+            reverse(ans.begin(), ans.end());
             return ans;
             
         }
