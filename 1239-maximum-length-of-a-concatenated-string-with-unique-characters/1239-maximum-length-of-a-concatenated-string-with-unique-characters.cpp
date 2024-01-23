@@ -1,11 +1,17 @@
 class Solution {
 public:
     bool isUnique(string str) {
-        sort(str.begin(), str.end());
-        for(int i = 1; i < str.length(); i++) {
-            if(str[i] == str[i-1]) {
+        // sort(str.begin(), str.end());
+        vector<bool> seen(26, false);
+        // unordered_set<char> seen;
+        for(int i = 0; i < str.length(); i++) {
+            // if(str[i] == str[i-1]) {
+            //     return false;
+            // }
+            if(seen[str[i]-'a']) {
                 return false;
             }
+            seen[str[i]-'a'] = true;
         }
         return true;
     }
