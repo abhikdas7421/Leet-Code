@@ -10,7 +10,7 @@ public:
         return true;
     }
     
-    void solve(vector<string>& arr, int i, string subSeq, int& ans) {
+    void solve(vector<string>& arr, int i, string& subSeq, int& ans) {
         // base case
         if(i >= arr.size()) {
             if(subSeq.size() > ans) {
@@ -30,6 +30,7 @@ public:
         string temp = subSeq+arr[i];
         if(isUnique(temp)) {
             solve(arr, i+1, temp, ans);
+            
         }
         else {
             solve(arr, i+1, subSeq, ans);
