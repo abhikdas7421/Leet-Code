@@ -15,20 +15,6 @@ public:
         if(root == nullptr) {
             return 0;
         }
-        // if(root->left == nullptr && root->right == nullptr) {
-        //     freq[root->val]++;
-        //     int oddCount = 0;
-        //     for(int i = 1; i < 10; i++) {
-        //         if(freq[i]%2  != 0) {
-        //             oddCount++;
-        //         }
-        //     }
-        //     freq[root->val]--;
-        //     if(oddCount > 1) {
-        //         return 0;
-        //     } 
-        //     return 1;
-        // }
         
         freq[root->val]++;
         
