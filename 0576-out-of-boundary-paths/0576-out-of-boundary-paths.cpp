@@ -1,6 +1,6 @@
 class Solution {
 public:
-     int M;
+        int M;
         int N;
         int MOD = 1e9+7;
         vector<vector<int>> directions{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
