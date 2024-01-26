@@ -4,7 +4,6 @@ public:
         int n = temperatures.size();
         vector<int> ans(n, 0);
         stack<int> st;
-        // st.push(n);
         
         for(int i = n-1; i >= 0; i--) {
             int temp = temperatures[i];
