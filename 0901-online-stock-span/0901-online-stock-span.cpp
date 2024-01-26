@@ -13,8 +13,9 @@ public:
             st.pop();
         }
         
-        pair<int,int> p = make_pair(price, span);
-        st.push(p);
+        // pair<int,int> p = make_pair(price, span);
+        // st.push(p);
+        st.push({price, span});
         
         return span;
     }
