@@ -8,17 +8,6 @@ public:
         ans += minPath;
     }
     
-    string getMinPath(int i, string path) {
-        string directory = "";
-        directory += path[i];
-        i++;
-        while(i < path.length() && path[i] != '/') {
-            directory += path[i];
-            i++;
-        }
-        
-        return directory;
-    }
 
     string simplifyPath(string path) {
         int i = 0;
@@ -26,7 +15,15 @@ public:
         
         stack<string> st;
         while(i < n) {
-            string minPath = getMinPath(i, path);
+            int start = i;
+            int end = start+1;
+            
+            while(end < path.length() && path[end] != '/') {
+                end++;
+            }
+            
+            string minPath = path.substr(start, end-start);
+            i = end;
             
             if(!st.empty() && minPath == "/..") {
                 st.pop();
@@ -35,7 +32,6 @@ public:
                 st.push(minPath);
             }
             
-            i += minPath.length();
         }
         
         string ans = st.empty() ? "/": "";
