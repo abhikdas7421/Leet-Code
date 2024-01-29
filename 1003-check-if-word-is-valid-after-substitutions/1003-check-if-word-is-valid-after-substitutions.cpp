@@ -21,13 +21,14 @@ public:
                 
                if(!st.empty() && st.top() == 'b') {
                    st.pop();
-                }
-                else {
-                    return false;
-                }
-                
-                if(!st.empty() && st.top() == 'a') {
-                    st.pop();
+                   
+                   if(!st.empty() && st.top() == 'a') {
+                       st.pop();
+                   }
+                   else {
+                       return false;
+                   }
+                   
                 }
                 else {
                     return false;
