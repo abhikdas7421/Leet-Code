@@ -1,8 +1,9 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char> st;
+        if(s[0] != 'a') return false;
         
+        stack<char> st;
         for(auto ch : s) {
             
             if(ch == 'a') {
