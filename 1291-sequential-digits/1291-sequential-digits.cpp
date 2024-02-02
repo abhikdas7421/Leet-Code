@@ -8,7 +8,9 @@ public:
                 string temp = s.substr(i, len);
                 int pass = stoi(temp);
                 
-                if(low <= pass && pass <= high) ans.push_back(pass);
+                if(low <= pass && pass <= high) {
+                    ans.push_back(pass);
+                }
             }
         }
         
