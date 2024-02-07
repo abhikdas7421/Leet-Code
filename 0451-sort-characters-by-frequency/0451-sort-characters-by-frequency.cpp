@@ -8,11 +8,11 @@ public:
             v[ch] = {ch, freq+1};
         }
         
-        auto cmp = [&](pair<char, int> &p1, pair<char, int> &p2) {
+        auto lambda = [&](pair<char, int> &p1, pair<char, int> &p2) {
             return p1.second > p2.second;
         };
         
-        sort(v.begin(), v.end(), cmp);
+        sort(v.begin(), v.end(), lambda);
         
         string ans = "";
         for(int i = 0; i < 123; i++) {
