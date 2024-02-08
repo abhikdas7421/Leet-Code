@@ -13,13 +13,17 @@ public:
             balance += gas[i]-cost[i];
             
             if(balance < 0) {
-                deficit += balance;
+                // deficit += balance;
+                deficit += abs(balance);
                 balance = 0;
                 start = i+1;
             }
         }
         
-        if(deficit+balance >= 0) {
+        // if(deficit+balance >= 0) {
+        //     return start;
+        // }
+        if(balance >= deficit) {
             return start;
         }
         return -1;
