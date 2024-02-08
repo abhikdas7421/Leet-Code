@@ -9,7 +9,7 @@ public:
         // circuti starting point
         int start = 0;
         
-        for(int i = 0; i < gas.size(); i++) {
+        for(int i = 0; i < gas.size(); i++) { // T.C -> O(n) || S.C -> O(1)
             balance += gas[i]-cost[i];
             
             if(balance < 0) {
