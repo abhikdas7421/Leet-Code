@@ -36,7 +36,6 @@ public:
             index = prevIndex[index];
         }
         
-        sort(result.begin(), result.end());
         return result;
     }
 };
