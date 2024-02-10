@@ -7,14 +7,25 @@ public:
     }
     
     void push(int x) {
-        q2.push(x);
+        /*q2.push(x);
         
         while(!q1.empty()) {
             q2.push(q1.front());
             q1.pop();
         }
         
-        swap(q1,q2);
+        swap(q1,q2);*/
+        
+        // Follow-up:- implement using only one queue
+        
+        q1.push(x);
+        int size = q1.size()-1;
+        
+        while(size--) {
+            int temp = q1.front();
+            q1.pop();
+            q1.push(temp);
+        }
     }
     
     int pop() {
