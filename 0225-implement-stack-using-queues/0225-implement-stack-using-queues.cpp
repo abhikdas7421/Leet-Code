@@ -1,6 +1,6 @@
 class MyStack {
     queue<int> q1;
-    queue<int> q2;
+    // queue<int> q2;
 public:
     MyStack() {
         
