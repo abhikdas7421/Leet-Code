@@ -22,9 +22,12 @@ public:
         int size = q1.size()-1;
         
         while(size--) {
-            int temp = q1.front();
+            // int temp = q1.front();
+            // q1.pop();
+            // q1.push(temp);
+            
+            q1.push(q1.front());
             q1.pop();
-            q1.push(temp);
         }
     }
     
