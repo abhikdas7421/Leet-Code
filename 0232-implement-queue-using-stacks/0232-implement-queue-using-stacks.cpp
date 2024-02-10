@@ -6,11 +6,11 @@ public:
         
     }
     
-    void push(int x) {
+    void push(int x) { // T.C -> O(1)
         input.push(x);
     }
     
-    int pop() {
+    int pop() { // T.C -> Amortised O(1)
         if(!output.empty()) {
             int poped = output.top();
             output.pop();
@@ -27,7 +27,7 @@ public:
         return poped;
     }
     
-    int peek() {
+    int peek() { // T.C -> Amortised O(1)
         if(!output.empty()) {
             return output.top();
         }
@@ -41,7 +41,7 @@ public:
         return front;
     }
     
-    bool empty() {
+    bool empty() { // T.C -> O(1)
         return input.empty() && output.empty();
     }
 };
