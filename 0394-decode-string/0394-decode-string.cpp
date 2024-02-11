@@ -25,11 +25,11 @@ public:
                 reverse(numericTimes.begin(), numericTimes.end());
                 int n = stoi(numericTimes);
                 
-                string repeatedString = "";
+                string currDecode = "";
                 while(n--) {
-                    repeatedString += stringToRepeat;
+                    currDecode += stringToRepeat;
                 }
-                st.push(repeatedString);
+                st.push(currDecode);
             }
         }
         
