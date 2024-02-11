@@ -9,27 +9,27 @@ public:
                 st.push(temp);
             }
             else {
-                string temp = "";
+                string stringToRepeat = "";
                 while(!st.empty() && st.top() != "[") {
-                    temp += st.top();
+                    stringToRepeat += st.top();
                     st.pop();
                 }
                 st.pop();
                 
-                string num = "";
+                string numericTimes = "";
                 while( !st.empty() && isdigit(st.top()[0]) ) {
-                    num += st.top();
+                    numericTimes += st.top();
                     st.pop();
                 }
                 
-                reverse(num.begin(), num.end());
-                int n = stoi(num);
+                reverse(numericTimes.begin(), numericTimes.end());
+                int n = stoi(numericTimes);
                 
-                string temp2 = "";
+                string repeatedString = "";
                 while(n--) {
-                    temp2 += temp;
+                    repeatedString += stringToRepeat;
                 }
-                st.push(temp2);
+                st.push(repeatedString);
             }
         }
         
