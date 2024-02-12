@@ -20,7 +20,7 @@ public:
     }
     */
     
-    // Approach 2:- By sorting
+    // Approach 2:- By sorting | T.C -> O(nlogn) | S.C -> O(1)
     int majorityElement(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         int n = nums.size()/2;
