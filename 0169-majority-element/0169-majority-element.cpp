@@ -1,7 +1,7 @@
 class Solution {
 public:
     // Approach 1:- Using Map | T.C -> O(n) | S.C-> O(n)
-    int majorityElement(vector<int>& nums) {
+    /*int majorityElement(vector<int>& nums) {
         unordered_map<int, int> mp;
         
         for(auto num : nums) {
@@ -17,5 +17,14 @@ public:
         }
         
         return ans;
+    }
+    */
+    
+    // Approach 2:- By sorting
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size()/2;
+        
+        return nums[n];
     }
 };
