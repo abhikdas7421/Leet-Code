@@ -21,10 +21,51 @@ public:
     */
     
     // Approach 2:- By sorting | T.C -> O(nlogn) | S.C -> O(1)
-    int majorityElement(vector<int>& nums) {
+    /*int majorityElement(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         int n = nums.size()/2;
         
         return nums[n];
     }
+    */
+    
+    // Approach 3:- Moore's Voting Algorithm | T.C -> O(n) | S.C -> O(1)
+    int majorityElement(vector<int>& nums) {
+        int count = 0;
+        int candidate = 0; // random number
+        
+        for(auto num : nums) {
+            
+            if(count == 0) {
+                count++;
+                candidate = num;
+            }
+            else if(candidate == num) {
+                count++;
+            }
+            else {
+                count--;
+            }
+        }
+        
+        return candidate;
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
