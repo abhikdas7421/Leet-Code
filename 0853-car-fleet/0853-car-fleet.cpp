@@ -16,9 +16,9 @@ public:
         
         stack<float> st;
         for(int i = 0; i < n; i++) {
-            int pos = car[i].first;
-            int speed = car[i].second;
-            float time = (float)(target-pos)/speed;
+            float pos = car[i].first;
+            float speed = car[i].second;
+            float time = (target-pos)/speed;
             
             while(!st.empty() && st.top() <= time) {
                 st.pop();
