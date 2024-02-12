@@ -37,15 +37,11 @@ public:
         for(auto num : nums) {
             
             if(count == 0) {
-                count++;
                 candidate = num;
             }
-            else if(candidate == num) {
-                count++;
-            }
-            else {
-                count--;
-            }
+            
+            count += (candidate == num) ? 1 : -1;
+            
         }
         
         return candidate;
