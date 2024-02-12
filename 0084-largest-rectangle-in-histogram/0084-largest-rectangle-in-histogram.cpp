@@ -1,13 +1,17 @@
 class Solution {
 public:
-    vector<int> nextSmallerEle(vector<int> &v) {
+    vector<int> nextSmallerElement(vector<int>& v) {
+        int n = v.size();
+        
         stack<int> st;
-        st.push(v.size());
+        st.push(n);
         
         vector<int> ans;
-        for(int i = v.size()-1; i >= 0; i--) {
+        
+        for(int i = n-1; i >= 0; i--) {
+            int curr = v[i];
             
-            while(st.top() < v.size() && v[st.top()] >= v[i]) {
+            while(!st.empty() && st.top() != n && v[st.top()] >= curr) {
                 st.pop();
             }
             ans.push_back(st.top());
@@ -18,14 +22,18 @@ public:
         return ans;
     }
     
-    vector<int> prevSmallerEle(vector<int> &v) {
+    vector<int> prevSmallerElement(vector<int>& v) {
+        int n = v.size();
+        
         stack<int> st;
         st.push(-1);
         
         vector<int> ans;
-        for(int i = 0; i < v.size(); i++) {
+        
+        for(int i = 0; i < n; i++) {
+            int curr = v[i];
             
-            while(st.top() >= 0 && v[st.top()] >= v[i]) {
+            while(!st.empty() && st.top() != -1 && v[st.top()] >= curr) {
                 st.pop();
             }
             ans.push_back(st.top());
@@ -33,25 +41,22 @@ public:
         }
         
         return ans;
-        
     }
     
     int largestRectangleArea(vector<int>& heights) {
-        
         int n = heights.size();
-        int maxArea = 0;
+        vector<int> next = nextSmallerElement(heights);
+        vector<int> prev = prevSmallerElement(heights);
         
-        vector<int> next = nextSmallerEle(heights);
-        vector<int> prev = prevSmallerEle(heights);
-        
+        int maxArea = INT_MIN;
         for(int i = 0; i < n; i++) {
+            int width = next[i]-prev[i]-1;
             int height = heights[i];
-            int Width = next[i] - prev[i] - 1;
-            int area = height * Width;
-            maxArea = max(maxArea, area);
+            int currArea = width * height;
+            
+            maxArea = max(maxArea, currArea);
         }
         
         return maxArea;
-        
     }
 };
