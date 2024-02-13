@@ -1,6 +1,5 @@
 class Solution {
-public:
-    bool isPalindrome(string &str) {
+     bool isPalindrome(string &str) {
         int i = 0;
         int j = str.length()-1;
         
@@ -15,14 +14,13 @@ public:
         return true;
     }
     
+public:
     string firstPalindrome(vector<string>& words) {
         
-        for(string str : words) {
+        for(string word : words) {
             
-            if(isPalindrome(str)) {
-                
-                return str;
-            }
+            if(isPalindrome(word))
+                return word;
         }
         
         return "";
