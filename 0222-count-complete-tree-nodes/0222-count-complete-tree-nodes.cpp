@@ -11,13 +11,19 @@
  */
 class Solution {
 public:
+    void inOrder(TreeNode* root, int &count) {
+        if(root == nullptr) {
+            return;
+        }
+        
+        inOrder(root->left, count);
+        count++;
+        inOrder(root->right, count);
+    }
+    
     int countNodes(TreeNode* root) {
-        if(root == nullptr) return 0;
-        
-        int leftCount = countNodes(root->left);
-        int rightCount = countNodes(root->right);
-        
-        return 1+leftCount+rightCount;
-        
+        int count = 0;
+        inOrder(root, count);
+        return count;
     }
 };
