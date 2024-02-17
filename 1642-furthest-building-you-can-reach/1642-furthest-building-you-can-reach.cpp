@@ -24,9 +24,10 @@ public:
                     int max_past_bricks = pq.top();
                     
                     if(diff < max_past_bricks) {
-                        pq.pop();
                         bricks += max_past_bricks;
                         bricks -= diff;
+                        
+                        pq.pop();
                         pq.push(diff);
                     }
                 }
