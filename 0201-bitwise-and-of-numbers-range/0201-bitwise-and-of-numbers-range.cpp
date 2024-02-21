@@ -9,11 +9,6 @@ public:
             shiftCount++;
         }
         
-        int ans = left;
-        while(shiftCount--) {
-           ans = ans << 1;
-        }
-        
-        return ans;
+       return left << shiftCount;
     }
 };
