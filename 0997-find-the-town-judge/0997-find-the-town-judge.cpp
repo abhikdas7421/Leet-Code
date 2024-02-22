@@ -12,23 +12,12 @@ public:
             
         }
         
-        int maxTrust = INT_MIN;
-        int index = -1;
         for(int i = 1; i <= n; i++) {
-            // if(ans[i] > maxTrust) {
-            //     maxTrust = ans[i];
-            //     index = i;
-            // }
             if(ans[i] == n-1) {
                 return i;
             }
         }
         
         return -1;
-        
-        // if(maxTrust == n-1) {
-        //     return index;
-        // }
-        // return -1;
     }
 };
