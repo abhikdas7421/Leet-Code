@@ -58,9 +58,10 @@ public:
         
         DSU dsu(n);
         
+        // O(n * sqrt())
         for(int i = 0; i < n; i++) { // O(n)
             
-            for(int factor = 2; factor*factor <= nums[i]; factor++) {
+            for(int factor = 2; factor*factor <= nums[i]; factor++) { // O(sqrt(nums[i]))
                 
                 if(nums[i]%factor != 0) {
                     continue;
