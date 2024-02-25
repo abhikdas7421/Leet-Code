@@ -44,13 +44,13 @@ public:
         int maxUse = 0;
         
         for(int room = 0; room < n; room++) {
-            // cout << roomUsedCount[room] << " ";
+            cout << roomUsedCount[room] << " ";
             if(roomUsedCount[room] > maxUse) {
                 resultRoom = room;
                 maxUse = roomUsedCount[room];
             }
         }
-        // cout<<endl;
+        cout<<endl;
         return resultRoom;
     }
 };
