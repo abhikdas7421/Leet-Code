@@ -9,7 +9,8 @@ public:
         
         vector<int> roomUsedCount(n, 0);
         
-        for(vector<int> &meet : meetings) {
+        // O(m*n) + O(mlogm)
+        for(vector<int> &meet : meetings) { // O(m)
             
             int start = meet[0];
             int end = meet[1];
@@ -19,7 +20,7 @@ public:
             
             long long earlyEndRoomTime = LLONG_MAX;
             int earlyEndRoom = 0;
-            for(int room = 0; room < n; room++) {
+            for(int room = 0; room < n; room++) { // O(n)
                 
                 if(lastAvailableAt[room] <= start) {
                     lastAvailableAt[room] = end;
@@ -44,13 +45,11 @@ public:
         int maxUse = 0;
         
         for(int room = 0; room < n; room++) {
-            cout << roomUsedCount[room] << " ";
             if(roomUsedCount[room] > maxUse) {
                 resultRoom = room;
                 maxUse = roomUsedCount[room];
             }
         }
-        cout<<endl;
         return resultRoom;
     }
 };
