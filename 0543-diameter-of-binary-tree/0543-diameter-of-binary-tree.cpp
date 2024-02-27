@@ -57,6 +57,8 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
         return diameterFast(root).first;
     }*/
+    
+    // Approach :- 3
     int solve(TreeNode* root, int &result) {
         if(root == NULL) {
             return 0;
