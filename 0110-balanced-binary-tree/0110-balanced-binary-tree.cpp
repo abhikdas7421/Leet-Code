@@ -11,46 +11,23 @@
  */
 class Solution {
     int height(TreeNode* root) {
-        if(root == nullptr) return 0;
+        if(root == NULL) return 0;
         
-        return 1 + max(height(root->left), height(root->right));
+        int left = height(root->left);
+        int right = height(root->right);
+        
+        return max(left, right)+1;
     }
 public:
-    // Approach 1:- T.C - > O(n^2) | S.C -> O(n);
-    /*bool isBalanced(TreeNode* root) {
-        if(root == nullptr) return true;
+    bool isBalanced(TreeNode* root) {
+        if(root == NULL) return true;
         
         bool left = isBalanced(root->left);
         bool right = isBalanced(root->right);
         
-        bool diff = abs(height(root->left) - height(root->right)) <= 1;
+        bool h = abs(height(root->left)-height(root->right)) <= 1 ? true : false;
         
-        return (left && right && diff);
-    }*/
-    
-    // Approach 2:- 
-    pair<bool, int> isBalancedFast(TreeNode* root) {
-        if(root == nullptr) {
-            pair<bool, int> p = make_pair(true, 0);
-            return p;
-        }
+        return left&&right&&h;
         
-        pair<bool, int> left = isBalancedFast(root->left);
-        pair<bool, int> right = isBalancedFast(root->right);
-        
-        bool leftAns = left.first;
-        bool rightAns = right.first;
-        
-        bool diff = abs(left.second-right.second) <= 1;
-        
-        pair<bool, int> ans;
-        ans.first = (leftAns && rightAns && diff);
-        ans.second = 1 + max(left.second, right.second);
-        
-        return ans;
-    }
-    
-    bool isBalanced(TreeNode* root) {
-        return isBalancedFast(root).first;
     }
 };
