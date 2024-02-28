@@ -16,26 +16,18 @@ public:
         
         queue<TreeNode*> que;
         que.emplace(root);
-        que.emplace(nullptr);
         
         int ans = root->val;
         
         while(!que.empty()) {
             TreeNode* node = que.front(); que.pop();
+            ans = node->val;
             
-            if(!node) {
-                if(!que.empty()) {
-                    ans = que.front()->val;
-                    que.emplace(nullptr);
-                }
-                continue;
-            }
-            
-            if(node->left) {
-                que.emplace(node->left);
-            }
             if(node->right) {
                 que.emplace(node->right);
+            }
+            if(node->left) {
+                que.emplace(node->left);
             }
         }
         
