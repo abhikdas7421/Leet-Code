@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void solve(TreeNode* &root, int &sum) {
+    void solve(TreeNode* root, int &sum) {
         if(root == NULL) {
             sum += 0;
             return;
