@@ -12,7 +12,7 @@
 class Solution {
 public:
     // Approach 1:- (Using BFS)
-    int findBottomLeftValue(TreeNode* root) {
+    /*int findBottomLeftValue(TreeNode* root) {
         
         queue<TreeNode*> que;
         que.emplace(root);
@@ -32,9 +32,38 @@ public:
         }
         
         return ans;
+    }*/
+    
+    // Approach 2:- (Using BFS -> level by level processsing)
+    int findBottomLeftValue(TreeNode* root) {
+        
+        queue<TreeNode*> que;
+        que.emplace(root);
+        
+        int bottomLeft = root->val;
+        
+        while(!que.empty()) {
+            int n = que.size();
+            
+            while(n--) {
+                TreeNode* node = que.front(); que.pop();
+                bottomLeft = node->val;
+                
+                if(node->right) {
+                    que.emplace(node->right);
+                }
+                if(node->left) {
+                    que.emplace(node->left);
+                }
+            }
+           
+        }
+        
+        return bottomLeft;
     }
     
-    // Approach 2:- Using DFS
+    
+    // Approach 3:- Using DFS
     /*void solve(TreeNode* node, int currDepth, int &depth, int &leftMostValue) {
         if(node == NULL) {
             return;
