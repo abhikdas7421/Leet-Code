@@ -26,11 +26,8 @@ public:
                 if(!que.empty()) {
                     ans = que.front()->val;
                     que.push(NULL);
-                    continue;
                 }
-                else {
-                    break;
-                }
+                continue;
             }
             
             if(node->left) {
