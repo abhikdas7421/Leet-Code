@@ -12,7 +12,7 @@
 class Solution {
 public:
     // Approach 1:- (Using BFS)
-    /*int findBottomLeftValue(TreeNode* root) {
+    int findBottomLeftValue(TreeNode* root) {
         
         queue<TreeNode*> que;
         que.push(root);
@@ -40,10 +40,10 @@ public:
         }
         
         return ans;
-    }*/
+    }
     
     // Approach 2:- Using DFS
-    void solve(TreeNode* node, int currDepth, int &depth, int &leftMostValue) {
+    /*void solve(TreeNode* node, int currDepth, int &depth, int &leftMostValue) {
         if(node == NULL) {
             return;
         }
@@ -65,5 +65,5 @@ public:
         solve(root, currDepth, depth, leftMostValue);
         
         return leftMostValue;
-    }
+    }*/
 };
