@@ -29,11 +29,27 @@ public:
         
     }
     
-    int sumNumbers(TreeNode* root) {
-        string str;
-        int ans = 0;
+    int dfs2(TreeNode* root, int ans) {
+        if(root == NULL) return 0;
         
-        dfs(root, str, ans);
-        return ans;
+        ans = ans*10 + root->val;
+        if(!root->left && !root->right) {
+            return ans;
+        }
+        
+        int left = dfs2(root->left, ans);
+        int right = dfs2(root->right, ans);
+        
+        return left+right;
+    }
+    
+    int sumNumbers(TreeNode* root) {
+//         string str;
+//         int ans = 0;
+        
+//         dfs(root, str, ans);
+//         return ans;
+        
+        return dfs2(root, 0);
     }
 };
