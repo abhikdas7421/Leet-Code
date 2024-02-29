@@ -27,10 +27,7 @@ public:
                 
                 if(level%2 == 0) { // even level
                     
-                    if(i == 0 && curr->val % 2 != 0) {
-                        prev = curr->val;
-                    }
-                    else if(i != 0 && curr->val % 2 != 0 && curr->val > prev) {
+                    if((i == 0 && curr->val % 2 != 0) || (i != 0 && curr->val % 2 != 0 && curr->val > prev)) {
                         prev = curr->val;
                     }
                     else {
@@ -40,10 +37,7 @@ public:
                 }
                 else { // odd level
                     
-                    if(i == 0 && curr->val % 2 == 0) {
-                        prev = curr->val;
-                    }
-                    else if(i != 0 && curr->val % 2 == 0 && curr->val < prev) {
+                    if((i == 0 && curr->val % 2 == 0) || (i != 0 && curr->val % 2 == 0 && curr->val < prev)) {
                         prev = curr->val;
                     }
                     else {
