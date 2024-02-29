@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    
+    // Approach 1
     void dfs(TreeNode* root, string &str, int &ans) {
         if(!root) return;
         
@@ -29,7 +29,18 @@ public:
         
     }
     
-    int dfs2(TreeNode* root, int ans) {
+    int sumNumbers(TreeNode* root) {
+        string str;
+        int ans = 0;
+        
+        dfs(root, str, ans);
+        return ans;
+        
+        
+    }
+    
+    // Approach 2
+    /*int dfs2(TreeNode* root, int ans) {
         if(root == NULL) return 0;
         
         ans = ans*10 + root->val;
@@ -44,12 +55,7 @@ public:
     }
     
     int sumNumbers(TreeNode* root) {
-//         string str;
-//         int ans = 0;
-        
-//         dfs(root, str, ans);
-//         return ans;
         
         return dfs2(root, 0);
-    }
+    }*/
 };
