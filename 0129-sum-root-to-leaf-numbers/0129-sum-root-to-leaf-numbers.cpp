@@ -11,10 +11,8 @@
  */
 class Solution {
 public:
-    int ans = 0;
-    string str;
     
-    void dfs(TreeNode* root) {
+    void dfs(TreeNode* root, string &str, int &ans) {
         if(!root) return;
         
         str.push_back(root->val+'0');
@@ -24,15 +22,18 @@ public:
             ans += path;
         }
         
-        dfs(root->left);
-        dfs(root->right);
+        dfs(root->left, str, ans);
+        dfs(root->right, str, ans);
         
         str.pop_back();
         
     }
     
     int sumNumbers(TreeNode* root) {
-        dfs(root);
+        string str;
+        int ans = 0;
+        
+        dfs(root, str, ans);
         return ans;
     }
 };
