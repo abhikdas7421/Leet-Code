@@ -12,23 +12,14 @@
 class Solution {
 public:
      void hasPathSum(TreeNode* root, int targetSum, vector<int> &path, vector<vector<int>> &ans) {
-        if(root == NULL) {
-           
-            return;
-        }
+        if(!root) return;
+         
+        
+        path.push_back(root->val);
          
         // leaf node
-        if(root->left == NULL && root->right == NULL) {
-            if(root->val == targetSum) {
-                path.push_back(root->val);
-                ans.push_back(path);
-                path.pop_back();
-            }
-            
-            return;
-        }
+        if(root->val == targetSum &&root->left == NULL && root->right == NULL) ans.push_back(path);
          
-        path.push_back(root->val);
         hasPathSum(root->left, targetSum-root->val, path, ans);
         hasPathSum(root->right, targetSum-root->val, path, ans);
         path.pop_back();
