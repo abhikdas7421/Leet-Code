@@ -26,41 +26,30 @@ public:
                 TreeNode* curr = que.front(); que.pop();
                 
                 if(level%2 == 0) { // even level
-
-                    if(i == 0) {
-                        if(curr->val % 2 != 0) {
-                            prev = curr->val;
-                        }
-                        else {
-                            return false;
-                        }
+                    
+                    if(i == 0 && curr->val % 2 != 0) {
+                        prev = curr->val;
+                    }
+                    else if(i != 0 && curr->val % 2 != 0 && curr->val > prev) {
+                        prev = curr->val;
                     }
                     else {
-                        if(curr->val % 2 != 0 && curr->val > prev) {
-                            prev = curr->val;
-                        }
-                        else {
-                            return false;
-                        }
+                        return false;
                     }
+
                 }
                 else { // odd level
-                    if(i == 0) {
-                        if(curr->val % 2 == 0) {
-                            prev = curr->val;
-                        }
-                        else {
-                            return false;
-                        }
+                    
+                    if(i == 0 && curr->val % 2 == 0) {
+                        prev = curr->val;
+                    }
+                    else if(i != 0 && curr->val % 2 == 0 && curr->val < prev) {
+                        prev = curr->val;
                     }
                     else {
-                        if(curr->val %2 == 0 && curr->val < prev) {
-                            prev = curr->val;
-                        }
-                        else {
-                            return false;
-                        }
+                        return false;
                     }
+                    
                 }
                 
                 if(curr->left) {
