@@ -15,31 +15,32 @@ public:
         queue<TreeNode*> que;
         que.emplace(root);
         
-        int level = 0;
-        int prev;
-        
+        bool even_level = true;
         while(!que.empty()) {
             
             int n = que.size();
             
-            for(int i = 0; i < n; i++) {
+            int prev;
+            if(even_level) {
+                prev = INT_MIN;
+            }
+            else {
+                prev = INT_MAX;
+            }
+            
+            while(n--) {
+                
                 TreeNode* curr = que.front(); que.pop();
                 
-                if( (level%2 == 0 && i == 0 && curr->val % 2 != 0) || 
-                   
-                    (level%2 == 0 && i != 0 && curr->val % 2 != 0 && curr->val > prev) ||
-                   
-                    (level%2 != 0 && i == 0 && curr->val % 2 == 0) ||
-                   
-                    (level%2 != 0 && i != 0 && curr->val % 2 == 0 && curr->val < prev)
-                   
-                  ) {
-                        prev = curr->val;
-                }
-                else {
+                if(even_level && (curr->val % 2 == 0 || curr->val <= prev)) {
                     return false;
                 }
-
+                
+                if(!even_level && (curr->val % 2 != 0 || curr->val >= prev)) {
+                    return false;
+                }
+                
+                prev = curr->val;
                 
                 if(curr->left) {
                     que.emplace(curr->left);
@@ -50,43 +51,11 @@ public:
                 }
             }
             
-            level++;
+            even_level = !even_level;
+            
         }
         
         return true;
+        
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
