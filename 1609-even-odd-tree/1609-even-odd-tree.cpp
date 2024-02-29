@@ -25,26 +25,21 @@ public:
             for(int i = 0; i < n; i++) {
                 TreeNode* curr = que.front(); que.pop();
                 
-                if(level%2 == 0) { // even level
-                    
-                    if((i == 0 && curr->val % 2 != 0) || (i != 0 && curr->val % 2 != 0 && curr->val > prev)) {
+                if( (level%2 == 0 && i == 0 && curr->val % 2 != 0) || 
+                   
+                    (level%2 == 0 && i != 0 && curr->val % 2 != 0 && curr->val > prev) ||
+                   
+                    (level%2 != 0 && i == 0 && curr->val % 2 == 0) ||
+                   
+                    (level%2 != 0 && i != 0 && curr->val % 2 == 0 && curr->val < prev)
+                   
+                  ) {
                         prev = curr->val;
-                    }
-                    else {
-                        return false;
-                    }
+                }
+                else {
+                    return false;
+                }
 
-                }
-                else { // odd level
-                    
-                    if((i == 0 && curr->val % 2 == 0) || (i != 0 && curr->val % 2 == 0 && curr->val < prev)) {
-                        prev = curr->val;
-                    }
-                    else {
-                        return false;
-                    }
-                    
-                }
                 
                 if(curr->left) {
                     que.emplace(curr->left);
