@@ -17,10 +17,8 @@ public:
         }
         
         
-        if(!str.empty()) {
-            str += "->";
-        }
-        str += to_string(root->val);
+        
+        str.append(to_string(root->val));
         
         // leaf Node
         if(root->left == NULL && root->right == NULL) {
@@ -28,6 +26,7 @@ public:
             return;
         }
         
+        str.append("->");
         path(root->left, str, ans);
         path(root->right, str, ans);
     }
