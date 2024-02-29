@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    long long ans = 0;
+    int ans = 0;
     string str;
     
     void dfs(TreeNode* root) {
@@ -26,6 +26,7 @@ public:
         
         dfs(root->left);
         dfs(root->right);
+        
         str.pop_back();
         
     }
