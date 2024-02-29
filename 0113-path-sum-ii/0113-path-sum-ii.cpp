@@ -11,7 +11,10 @@
  */
 class Solution {
 public:
-     void hasPathSum(TreeNode* root, int targetSum, vector<int> &path, vector<vector<int>> &ans) {
+    vector<vector<int>> ans;
+    vector<int> path;
+    
+     void dfs(TreeNode* root, int targetSum) {
         if(!root) return;
          
         
@@ -20,8 +23,8 @@ public:
         // leaf node
         if(root->val == targetSum &&root->left == NULL && root->right == NULL) ans.push_back(path);
          
-        hasPathSum(root->left, targetSum-root->val, path, ans);
-        hasPathSum(root->right, targetSum-root->val, path, ans);
+        dfs(root->left, targetSum-root->val);
+        dfs(root->right, targetSum-root->val);
         path.pop_back();
         
        
@@ -29,9 +32,7 @@ public:
     
     
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
-        vector<vector<int>> ans;
-        vector<int> path;
-        hasPathSum(root, targetSum, path, ans);
+        dfs(root, targetSum);
         return ans;
         
         
