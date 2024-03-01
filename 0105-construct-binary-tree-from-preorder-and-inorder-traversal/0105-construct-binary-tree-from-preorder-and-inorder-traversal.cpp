@@ -20,6 +20,8 @@ class Solution {
         return -1;
     }
     
+    unordered_map<int, int> mp;
+    
     TreeNode* buildTreeHelper(vector<int> &pre, vector<int> &in, int size, int &preIndex, int inStart, int inEnd) {
         // base case
         if(preIndex >= size || inStart > inEnd) {
@@ -29,7 +31,8 @@ class Solution {
         // Step A: root
         int element = pre[preIndex++];
         TreeNode* root = new TreeNode(element);
-        int pos = findElement(in, inStart, inEnd, element);
+        // int pos = findElement(in, inStart, inEnd, element);
+        int pos = mp[element];
         
         
         // Step B: root->left
@@ -47,6 +50,11 @@ public:
         int preIndex = 0;
         int inStart = 0;
         int inEnd = size-1;
+        
+        for(int i = 0; i < size; i++) {
+            mp[inorder[i]] = i;
+        }
+        
         TreeNode* root = buildTreeHelper(preorder, inorder, size, preIndex, inStart, inEnd);
         
         return root;
