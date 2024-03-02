@@ -1,6 +1,7 @@
 class Solution {
 public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    // Approach 1:- Using extra space | T.C -> O(n+m) | S.C -> O(n+m)
+    /*void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         vector<int> mergedArr(n+m);
         
         int i = 0; // for nums1
@@ -34,5 +35,14 @@ public:
             k++;
         }
         
+    }*/
+    
+    // Approach 2:- Sorting | T.C -> O((n+m)log(n+m)) | S.C -> O(1)
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        for(int i = m, j = 0; j < n; i++, j++) {
+            nums1[i] = nums2[j];
+        }
+        
+        sort(nums1.begin(), nums1.end());
     }
 };
