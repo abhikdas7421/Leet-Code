@@ -5,16 +5,19 @@ public:
         
         vector<int> result(n);
         
-        int s = 0, e = n-1;
-        int i = n-1;
+        int s = 0, e = n-1; // nums---> indices
+        int i = n-1; // result ---> indices
         
         while(s <= e) {
-            if(abs(nums[s]) < abs(nums[e])) {
-                result[i] = nums[e]*nums[e];
+            int a = nums[s]*nums[s];
+            int b = nums[e]*nums[e];
+            
+            if(a < b) {
+                result[i] = b;
                 e--;
             }
             else {
-                result[i] = nums[s]*nums[s];
+                result[i] = a;
                 s++;
             }
             
