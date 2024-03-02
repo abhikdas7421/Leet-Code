@@ -38,11 +38,36 @@ public:
     }*/
     
     // Approach 2:- Sorting | T.C -> O((n+m)log(n+m)) | S.C -> O(1)
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    /*void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         for(int i = m, j = 0; j < n; i++, j++) {
             nums1[i] = nums2[j];
         }
         
         sort(nums1.begin(), nums1.end());
+    }*/
+    
+    // Approach 3:- Two Pointer | T.C -> O(n+m) | S.C -> O(1)
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        int i = m-1; // for nums1
+        int j = n-1; // for nums2
+        int k = m+n-1;
+        
+        while(i >= 0 && j >= 0) {
+            if(nums2[j] > nums1[i]) {
+                nums1[k] = nums2[j];
+                j--;
+            }
+            else {
+                nums1[k] = nums1[i];
+                i--;
+            }
+            
+            k--;
+        }
+        
+        while(j >= 0) {
+            nums1[k--] = nums2[j--];
+        }
     }
 };
