@@ -15,15 +15,14 @@ public:
             return nullptr;
         }
         
-        // ListNode* curr = head;
         head->next = helper(head->next, n, count);
         count++;
         
-        ListNode* newHead;
         if(count == n) {
-            newHead = head->next;
-            head->next = nullptr;
-            return newHead;
+            ListNode* temp = head;
+            head = head->next;
+            temp->next = nullptr;
+            return head;
         }
         
         return head;
