@@ -10,8 +10,8 @@
  */
 class Solution {
 public:
-    // Approach 1 :- 
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    // Approach 1 :- (Two pass) 
+    /*ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode* temp = head;
         int count = 0;
         
@@ -37,6 +37,37 @@ public:
         ListNode* deleteNode = temp->next;
         temp->next = temp->next->next;
         
+        deleteNode->next = nullptr;
+        delete deleteNode;
+        
+        return head;
+    }*/
+    
+    
+    // Approach 2 :- (Two pointer)
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        
+        for(int i = 0; i < n; i++) {
+            fast = fast->next;
+        }
+        
+        if(fast == nullptr) {
+            head = head->next;
+            slow->next = nullptr;
+            delete slow;
+            
+            return head;
+        }
+        
+        while(fast->next != nullptr) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        
+        ListNode* deleteNode = slow->next;
+        slow->next = slow->next->next;
         deleteNode->next = nullptr;
         delete deleteNode;
         
