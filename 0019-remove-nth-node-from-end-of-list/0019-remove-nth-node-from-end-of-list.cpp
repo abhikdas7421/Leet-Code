@@ -43,9 +43,33 @@ public:
         return head;
     }*/
     
+    // Approach 2 :- (recursion)
+        ListNode* helper(ListNode* head, int n, int &count) {
+            if(head == nullptr) {
+                return nullptr;
+            }
+
+            head->next = helper(head->next, n, count);
+            count++;
+
+            if(count == n) {
+                ListNode* temp = head;
+                head = head->next;
+                temp->next = nullptr;
+                return head;
+            }
+
+            return head;
+
+        }
+        ListNode* removeNthFromEnd(ListNode* head, int n) {
+            int count = 0;
+            ListNode* newHead = helper(head, n, count);
+            return newHead;
+        }
     
-    // Approach 2 :- (Two pointer-> One Pass requried)
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    // Approach 3 :- (Two pointer-> One Pass requried)
+    /*ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode* fast = head;
         ListNode* slow = head;
         
@@ -72,5 +96,5 @@ public:
         delete deleteNode;
         
         return head;
-    }
+    }*/
 };
