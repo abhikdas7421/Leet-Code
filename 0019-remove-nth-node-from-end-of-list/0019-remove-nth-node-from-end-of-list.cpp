@@ -29,22 +29,16 @@ public:
             return newHead;
         }
     
-        int res = count-n;
-        temp = head;    
-        res--;
-        while(temp != nullptr) {
-            if(res == 0) {
-                break;
-            }
+        int res = count-n-1; temp = head; 
+        while(temp != nullptr && res--) {
             temp = temp->next;
-            res--;
         }
         
         ListNode* deleteNode = temp->next;
         temp->next = temp->next->next;
         
-        // deleteNode->next = nullptr;
-        // delete deleteNode;
+        deleteNode->next = nullptr;
+        delete deleteNode;
         
         return head;
     }
