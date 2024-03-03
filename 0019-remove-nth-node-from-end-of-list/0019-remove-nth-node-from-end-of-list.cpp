@@ -44,7 +44,7 @@ public:
     }*/
     
     
-    // Approach 2 :- (Two pointer)
+    // Approach 2 :- (Two pointer-> One Pass requried)
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode* fast = head;
         ListNode* slow = head;
