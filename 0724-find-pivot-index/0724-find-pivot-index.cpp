@@ -3,21 +3,17 @@ public:
     int pivotIndex(vector<int>& nums) {
         int n = nums.size();
         
-        int left = 0;
-        int right = accumulate(nums.begin(), nums.end(), 0);
+        int leftSum = 0;
+        int rightSum = accumulate(nums.begin(), nums.end(), 0);
         
-        int i = 0;
-        while(i < n) {
-            if(i != 0) {
-                left += nums[i-1];
-            }
+        for(int i = 0; i < n; i++) {
+            rightSum -= nums[i];
             
-            right -= nums[i];
-            
-            if(left == right) {
+            if(leftSum == rightSum) {
                 return i;
             }
-            i++;
+            
+            leftSum += nums[i];
         }
         
         return -1;
