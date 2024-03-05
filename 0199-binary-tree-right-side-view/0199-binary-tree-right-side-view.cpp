@@ -11,7 +11,8 @@
  */
 class Solution {
 public:
-    vector<int> rightSideView(TreeNode* root) {
+    // Approach 1:- BFS Using extra space(map) | T.C:- O(n) | S.C:- O(h)
+    /*vector<int> rightSideView(TreeNode* root) {
         vector<int> ans;
         if(root == nullptr) {
             return ans;
@@ -38,6 +39,39 @@ public:
         
         for(auto p : mp) {
             ans.push_back(p.second);
+        }
+        return ans;
+    }*/
+    
+    // Approach 2:- BFS (Without extra space) | T.C:- O(n) | S.C:- O(1)
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        if(root == nullptr) {
+            return ans;
+        }
+        
+        queue<TreeNode*> que;
+        que.push(root);
+        
+        while(!que.empty()) {
+            int n = que.size();
+            
+            for(int i = 0; i < n; i++) {
+                TreeNode* temp = que.front(); que.pop();
+                
+                if(i == 0) {
+                    ans.push_back(temp->val);
+                }
+                
+                if(temp->right) {
+                    que.push(temp->right);
+                }
+                
+                if(temp->left) {
+                    que.push(temp->left);
+                }
+                
+            }
         }
         return ans;
     }
