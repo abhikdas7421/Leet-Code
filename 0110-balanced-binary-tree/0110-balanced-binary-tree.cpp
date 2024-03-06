@@ -38,7 +38,7 @@ public:
     }*/
     
     // Approach:- 2 | T.C -> O(n) | S.C -> O(1)
-    int height(TreeNode* root, bool &isbalanced) {
+    int height(TreeNode* & root, bool &isbalanced) {
         if(root == nullptr) {
             return 0;
         }
