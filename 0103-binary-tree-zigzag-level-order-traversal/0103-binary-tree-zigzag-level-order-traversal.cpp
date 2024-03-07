@@ -15,26 +15,26 @@ public:
         vector<vector<int>> result;
         if(root == nullptr) return result;
         
-        queue<TreeNode*> q;
-        q.push(root);
-        
+        queue<TreeNode*> que;
+        que.push(root);
         bool leftToRight = true;
-        while(!q.empty()) {
-            int size = q.size();
+        while(!que.empty()) {
+            int size = que.size();
+            
             vector<int> ans(size);
             
             for(int i = 0; i < size; i++) {
-                TreeNode* frontNode = q.front();
-                q.pop();
+                TreeNode* temp = que.front(); que.pop();
                 
                 int index = leftToRight ? i : size-i-1;
-                ans[index] = frontNode->val;
+                ans[index] = temp->val;
                 
-                if(frontNode->left) {
-                    q.push(frontNode->left);
+                if(temp->left) {
+                    que.push(temp->left);
                 }
-                if(frontNode->right) {
-                    q.push(frontNode->right);
+                
+                if(temp->right) {
+                    que.push(temp->right);
                 }
             }
             
@@ -45,16 +45,3 @@ public:
         return result;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
