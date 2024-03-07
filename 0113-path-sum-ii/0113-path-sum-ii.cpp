@@ -21,8 +21,12 @@ public:
         path.push_back(root->val);
          
         // leaf node
-        if(root->val == targetSum &&root->left == NULL && root->right == NULL) ans.push_back(path);
+//         if(root->val == targetSum &&root->left == NULL && root->right == NULL) {    ans.push_back(path);
          
+       if(root->val == targetSum &&root->left == NULL && root->right == NULL) {
+           ans.push_back(path);
+       }                                                                     
+                                                                                
         dfs(root->left, targetSum-root->val);
         dfs(root->right, targetSum-root->val);
         path.pop_back();
