@@ -1,6 +1,7 @@
 class Solution {
 public:
-    string customSortString(string order, string s) {
+    // Approach 1:-
+    /*string customSortString(string order, string s) {
         vector<char> freq(26,0);
         
         for(char &ch : s) {
@@ -16,7 +17,6 @@ public:
         }
         
         for(int i = 0; i < freq.size(); i++) {
-            
             while(freq[i] > 0) {
                 char ch = 'a'+i;
                 ans.push_back(ch);
@@ -25,5 +25,22 @@ public:
         }
         
         return ans;
+    }*/
+    
+    // Approach 2:-
+    string customSortString(string order, string s) {
+        vector<int> index(26, -1);
+        
+        for(int i = 0; i < order.size(); i++) {
+            char ch = order[i];
+            index[ch-'a'] = i;
+        }
+        
+        auto myCmp = [&index] (char &ch1, char &ch2) {
+            return index[ch1-'a'] < index[ch2-'a'];
+        };
+        
+        sort(s.begin(), s.end(), myCmp);
+        return s;
     }
 };
