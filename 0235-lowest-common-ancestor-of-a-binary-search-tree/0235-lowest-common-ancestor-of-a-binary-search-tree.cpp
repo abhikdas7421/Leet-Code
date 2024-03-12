@@ -15,19 +15,15 @@ public:
             return nullptr;
         }
         
-        if(p->val == root->val || q->val == root->val) {
-            return root;
-        }
         
-        if(min(p->val, q->val) < root->val && max(p->val, q->val) > root->val) {
-            return root;
-        }
-        else if(p->val < root->val && q->val < root->val) {
+        if(p->val < root->val && q->val < root->val) {
             return lowestCommonAncestor(root->left, p, q);
         }
-        else {
+        else if(p->val > root->val && q->val > root->val){
             return lowestCommonAncestor(root->right, p, q);
         }
+        
+        return root;
         
     }
 };
