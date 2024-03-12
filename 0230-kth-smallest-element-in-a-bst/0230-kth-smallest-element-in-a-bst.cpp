@@ -28,25 +28,31 @@ public:
     }*/
     
     
-    void solve(TreeNode* root, int &ans, int &k){
-        if(root == NULL)    return;
-        //left, root, right 
-        solve(root->left, ans, k);
+   // Approach:- 2
+    void solve(TreeNode* root, int &k, int& ans) {
+        // base case
+        if(root == NULL) {
+            return;
+        }
+        
+        // Left
+        solve(root->left, k, ans);
+        
         k--;
-        if(k == 0){
+        if(k == 0) {
             ans = root->val;
             return;
         }
-        solve(root->right, ans, k);
+        
+        solve(root->right, k, ans);
     }
     
     int kthSmallest(TreeNode* root, int k) {
-        
-        int cnt = 0;        
-        int ans;
-        solve(root, ans, k);
+        int ans = -1;
+        solve(root, k, ans);
         return ans;
     }
+    
 };
 
 
