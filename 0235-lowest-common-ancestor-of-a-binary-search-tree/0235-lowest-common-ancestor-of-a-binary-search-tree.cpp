@@ -16,14 +16,14 @@ public:
         }
         
         
-        if(p->val < root->val && q->val < root->val) {
+        if(p->val < root->val && q->val < root->val) { // Case 1
             return lowestCommonAncestor(root->left, p, q);
         }
-        else if(p->val > root->val && q->val > root->val){
+        else if(p->val > root->val && q->val > root->val){ // Case 2
             return lowestCommonAncestor(root->right, p, q);
         }
         
+        // Case 3 and 4
         return root;
-        
     }
 };
