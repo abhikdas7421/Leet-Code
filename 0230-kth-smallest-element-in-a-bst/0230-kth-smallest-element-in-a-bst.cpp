@@ -11,7 +11,8 @@
  */
 class Solution {
 public:
-    void inOrder(TreeNode* root, vector<int> &v) { //LNR
+    // Approach:- 1 | T.C:- O(n) | S.C:- O(n)
+    /*void inOrder(TreeNode* root, vector<int> &v) { //LNR
         if(root == nullptr) return;
         
         inOrder(root->left, v);
@@ -23,12 +24,36 @@ public:
         vector<int> arr;
         inOrder(root, arr);
         
-        int ans = -1;
-        
-        for(int i = 0; i < k; i++) {
-            ans = arr[i];
+        return arr[k-1];
+    }*/
+    
+    
+    void solve(TreeNode* root, int &ans, int &k){
+        if(root == NULL)    return;
+        //left, root, right 
+        solve(root->left, ans, k);
+        k--;
+        if(k == 0){
+            ans = root->val;
+            return;
         }
+        solve(root->right, ans, k);
+    }
+    
+    int kthSmallest(TreeNode* root, int k) {
         
+        int cnt = 0;        
+        int ans;
+        solve(root, ans, k);
         return ans;
     }
 };
+
+
+
+
+
+
+
+
+
