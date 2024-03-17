@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Approach 1:- 
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         int n = intervals.size();
         sort(intervals.begin(), intervals.end());
@@ -10,9 +11,9 @@ public:
             int start = intervals[i][0];
             int end = intervals[i][1];
             
-            if(!ans.empty() && end <= ans.back()[1]) {
-                continue;
-            }
+            // if(!ans.empty() && end <= ans.back()[1]) {
+            //     continue;
+            // }
             
             int j = i+1;
             while(j < n && end >= intervals[j][0]) {
