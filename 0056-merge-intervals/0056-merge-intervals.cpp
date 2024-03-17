@@ -15,15 +15,6 @@ public:
             }
             
             int j = i+1;
-            // for(; j < n; j++) {
-            //     if(end >= intervals[j][0]) {
-            //         end = max(end, intervals[j][1]);
-            //     }
-            //     else {
-            //         break;
-            //     }
-            // }
-            
             while(j < n && end >= intervals[j][0]) {
                 end = max(end, intervals[j][1]);
                 j++;
