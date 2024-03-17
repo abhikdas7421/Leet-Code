@@ -27,7 +27,7 @@ public:
         return pq.top();
     }*/
     
-    // Approach 4:- Quick Select
+    // Approach 4:- Quick Select | T.C:- O(n) avg, O(n*n) worst case
     int partition_algo(vector<int>& nums, int L, int R) {
         
         int p = nums[L];
