@@ -11,7 +11,8 @@
 
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    // Approach:- 1 (Recursive Approach)
+    /*ListNode* reverseList(ListNode* head) {
         if(head == nullptr || head->next == nullptr) {
             return head;
         }
@@ -24,5 +25,21 @@ public:
         currNext->next = curr;
         
         return tempHead;
+    }*/
+    
+    ListNode* reverseList(ListNode* head) {
+        
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        
+        while(curr) {
+            ListNode* temp = curr->next;
+            
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
+        }
+        
+        return prev;
     }
 };
