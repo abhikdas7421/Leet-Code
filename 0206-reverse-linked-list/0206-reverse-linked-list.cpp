@@ -27,6 +27,7 @@ public:
         return tempHead;
     }*/
     
+    // Approach:- 2 (Iterative Approach)
     ListNode* reverseList(ListNode* head) {
         
         ListNode* prev = nullptr;
