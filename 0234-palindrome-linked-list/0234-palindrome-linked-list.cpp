@@ -25,20 +25,26 @@ public:
         return prev;
     }
     
-    bool isPalindrome(ListNode* head) {
+    ListNode* midOfLL(ListNode* head) {
         ListNode* slow = head;
         ListNode* fast = head->next;
-        
+
         while(fast != nullptr && fast->next != nullptr) {
             slow = slow->next;
             fast = fast->next->next;
         }
-        
+
         ListNode* mid = slow->next;
         slow->next = nullptr;
         
+        return mid;
+    }
+    
+    bool isPalindrome(ListNode* head) {
+       
+        
         ListNode* head1 = head;
-        ListNode* head2 = reverseLL(mid);
+        ListNode* head2 = reverseLL(midOfLL(head));
         
         while(head1 != nullptr && head2 != nullptr) {
             if(head1->val != head2->val) {
