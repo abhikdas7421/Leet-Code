@@ -48,7 +48,7 @@ public:
     }*/
 
     // Approach 3:- Best approach | T.C:- O(n) | S.C:- O(1)
-    int firstMissingPositive(vector<int>& nums) {
+    /*int firstMissingPositive(vector<int>& nums) {
         int n = nums.size();
         for(int i = 0; i < n; i++) {
 
@@ -69,5 +69,38 @@ public:
 
         return i+1;
 
+    }*/
+
+    // Approach:- 4
+    int firstMissingPositive(vector<int>& nums) {
+        int n = nums.size();
+        bool containOne = false;
+
+        for(int i = 0; i < n; i++) {
+            if(nums[i] == 1) {
+                containOne = true;
+            }
+            else if(nums[i] <= 0 || nums[i] > n) {
+                nums[i] = 1;
+            }
+        }
+        
+        if(!containOne) return 1;
+
+        for(int i = 0; i < n; i++) {
+            int num = abs(nums[i]);
+            int idx = num-1;
+
+            if(nums[idx] > 0) {
+                nums[idx] *= -1;
+            }
+        }
+
+        for(int i = 0; i < n; i++) {
+            if(nums[i] < 0) continue;
+            return i+1;
+        }
+
+        return n+1;
     }
 };
