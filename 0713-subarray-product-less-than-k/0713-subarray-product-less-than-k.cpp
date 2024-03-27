@@ -14,13 +14,13 @@ public:
         while(j < n) {
             product *= nums[j];
 
-            while(product >= k && i < j) {
+            while(product >= k) {
                 product /= nums[i];
                 i++;
             }
 
-            if(product < k)
-                count += (j-i+1);
+            
+            count += (j-i+1);
             j++;
         
         }
