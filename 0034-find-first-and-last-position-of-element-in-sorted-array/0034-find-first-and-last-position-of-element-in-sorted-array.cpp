@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Approach:- 1 T.C :- O(logn) | S.C:- O(1)
     int firstPosition(vector<int>& nums, int target) {
         int pos = -1, start = 0, end = nums.size()-1;
         
