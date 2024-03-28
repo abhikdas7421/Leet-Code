@@ -6,7 +6,7 @@ public:
         
         for(int i = 0; i < k; i++) {
             
-            while(!dq.empty() && nums[i] >= nums[dq.back()]) {
+            while(!dq.empty() && nums[dq.back()] <= nums[i]) {
                 dq.pop_back();
             }
             
@@ -24,16 +24,15 @@ public:
                 dq.pop_front();
             }
             
-            while(!dq.empty() && nums[j] >= nums[dq.back()]) {
+            while(!dq.empty() && nums[dq.back()] <= nums[j]) {
                 dq.pop_back();
             }
             
             dq.push_back(j);
-            
             ans.push_back(nums[dq.front()]);
             
             i++;
-            j++;            
+            j++;
         }
         
         return ans;
