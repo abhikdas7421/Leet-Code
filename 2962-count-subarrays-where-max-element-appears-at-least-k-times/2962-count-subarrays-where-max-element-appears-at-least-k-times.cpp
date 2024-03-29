@@ -13,7 +13,7 @@ public:
         while(j < n) {
             if(nums[j] == maxi) maxCount++;
             
-            while(i < j && maxCount >= k) {
+            while(maxCount >= k) {
                 result += (n-j);
                 
                 if(nums[i] == maxi) {
@@ -22,9 +22,9 @@ public:
                 i++;
             }
             
-            if(i == j && maxCount == k) {
-              result++;
-            }
+            // if(i == j && maxCount == k) {
+            //   result++;
+            // }
             
             j++;
         }
