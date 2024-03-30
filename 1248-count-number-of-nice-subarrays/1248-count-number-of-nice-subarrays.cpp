@@ -9,10 +9,10 @@ public:
         int result = 0;
         
         while(j < n) {
-            if(nums[j]%2 != 0) oddCount++;
+            if(nums[j]&1 == 1) oddCount++;
             
             while(i < j && oddCount > k) {
-                if(nums[i]%2 != 0) oddCount--;
+                if(nums[i]&1 == 1) oddCount--;
                 i++;
             }
             
