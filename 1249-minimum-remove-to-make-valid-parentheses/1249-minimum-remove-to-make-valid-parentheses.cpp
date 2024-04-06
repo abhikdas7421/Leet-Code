@@ -1,7 +1,7 @@
 class Solution {
 public:
     // Approach:- 1 | T.C:- O(n) | S.C:- O(n)
-    string minRemoveToMakeValid(string s) {
+    /*string minRemoveToMakeValid(string s) {
         int n = s.length();
         
         stack<int> st;
@@ -35,6 +35,56 @@ public:
         }
         
         return result;
+    }*/
+    
+    // Approach:- 2 
+    // Iterate left to right -> Eleminate extra close brackets
+    // Iterate right to left -> Eleminate extra open brackets
+    string minRemoveToMakeValid(string s) {
+        int n = s.size();
+        
+        string result = "";
+        
+        // Iterte left to right
+        int open = 0;
+        for(int i = 0; i < n; i++) {
+            if(s[i] == '(') {
+                open++;
+                result.push_back(s[i]);
+            }
+            else if(s[i] == ')') {
+                if(open > 0) {
+                    open--;
+                    result.push_back(s[i]);
+                }
+            }
+            else {
+                result.push_back(s[i]);
+            }
+        }
+        
+        string final_result = "";
+        
+        // Iterate right to left
+        int close = 0;
+        for(int i = result.size()-1; i >= 0; i--) {
+            if(result[i] == ')') {
+                close++;
+                final_result.push_back(result[i]);
+            }
+            else if(result[i] == '(') {
+                if(close > 0) {
+                    close--;
+                    final_result.push_back(result[i]);
+                }
+            }
+            else {
+                final_result.push_back(result[i]);
+            }
+        }
+        
+        reverse(final_result.begin(), final_result.end());
+        return final_result;
     }
     
     /*string minRemoveToMakeValid(string s) {
