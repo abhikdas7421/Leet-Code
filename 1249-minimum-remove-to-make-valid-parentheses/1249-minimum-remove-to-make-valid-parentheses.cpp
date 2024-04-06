@@ -1,5 +1,39 @@
 class Solution {
 public:
+    // My Approach
+    /*string minRemoveToMakeValid(string s) {
+        stack<int> st;
+        
+        int i = 0;
+        while(i < s.size()) {
+            if(s[i] == '(') {
+                st.push(i);
+                i++;
+            }
+            else if(s[i] == ')') {
+                
+                if(!st.empty()) {
+                    st.pop();
+                    i++;
+                }
+                else {
+                    s.erase(i, 1);
+                }
+            }
+            else {
+                i++;
+            }
+        }
+        
+        while(!st.empty()) {
+            int idx = st.top();
+            st.pop();
+            s.erase(idx, 1);
+        }
+        
+        return s;
+    }*/
+    
     // Approach:- 1 | T.C:- O(n) | S.C:- O(n)
     /*string minRemoveToMakeValid(string s) {
         int n = s.length();
@@ -37,10 +71,10 @@ public:
         return result;
     }*/
     
-    // Approach:- 2 
+    // Approach:- 2 | T.C:- O(n) | S.C:- O(n)
     // Iterate left to right -> Eleminate extra close brackets
     // Iterate right to left -> Eleminate extra open brackets
-    string minRemoveToMakeValid(string s) {
+    /*string minRemoveToMakeValid(string s) {
         int n = s.size();
         
         string result = "";
@@ -85,39 +119,45 @@ public:
         
         reverse(final_result.begin(), final_result.end());
         return final_result;
-    }
+    }*/
     
-    /*string minRemoveToMakeValid(string s) {
-        stack<int> st;
+    // Approach:- 3
+    string minRemoveToMakeValid(string s) {
+        int n = s.length();
         
-        int i = 0;
-        while(i < s.size()) {
+        string temp = "";
+        
+        int open = 0;
+        for(int i = 0; i < n; i++) {
             if(s[i] == '(') {
-                st.push(i);
-                i++;
+                open++;
+                temp.push_back(s[i]);
             }
             else if(s[i] == ')') {
-                
-                if(!st.empty()) {
-                    st.pop();
-                    i++;
-                }
-                else {
-                    s.erase(i, 1);
+                if(open > 0) {
+                    open--;
+                    temp.push_back(s[i]);
                 }
             }
             else {
-                i++;
+                temp.push_back(s[i]);
             }
         }
         
-        while(!st.empty()) {
-            int idx = st.top();
-            st.pop();
-            s.erase(idx, 1);
+        string result = "";
+        
+        for(int i = temp.size()-1; i >= 0; i--) {
+            if(temp[i] == '(' && open > 0) {
+                open--;
+            }
+            else {
+                result.push_back(temp[i]);
+            }
         }
         
-        return s;
-        
-    }*/
+        reverse(result.begin(), result.end());
+        return result;
+    }
+    
+    
 };
