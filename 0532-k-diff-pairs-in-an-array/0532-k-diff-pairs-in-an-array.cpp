@@ -30,7 +30,7 @@ public:
         return ans.size();
     }*/
     
-    // Approach:- 2 (Using binary search)
+    // Approach:- 2 (Using binary search) | T.C:- O(nlog(n)) | S.C:- O(n)
     bool binary_search(vector<int>& nums, int s, int e, int target) {
         
         while(s <= e) {
@@ -52,6 +52,7 @@ public:
     
     int findPairs(vector<int>& nums, int k) {
         int n = nums.size();
+        
         sort(nums.begin(), nums.end());
         
         set<pair<int, int>> ans;
