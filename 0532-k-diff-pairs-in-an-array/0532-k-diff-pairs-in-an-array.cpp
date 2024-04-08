@@ -1,6 +1,6 @@
 class Solution {
 public:
-    // Approach:- 1(two pointer) | T.C:- O(nlog(n))
+    // Approach:- 1(two pointer) | T.C:- O(nlog(n)) | S.C:- O(n)
     int findPairs(vector<int>& nums, int k) {
         sort(nums.begin(), nums.end());
         
@@ -13,9 +13,9 @@ public:
             int diff = nums[j]-nums[i];
             
             if(diff == k) {
-                ans.insert({nums[i], nums[j]});
-                i++;
-                j++;
+                ans.insert({nums[i++], nums[j++]});
+                // i++;
+                // j++;
             }
             else if(diff < k) {
                 j++;
@@ -25,10 +25,6 @@ public:
             }
             
             if(i == j) j++;
-        }
-        
-        for(auto &it:ans) {
-            cout << it.first << " " << it.second << endl;
         }
         
         return ans.size();
