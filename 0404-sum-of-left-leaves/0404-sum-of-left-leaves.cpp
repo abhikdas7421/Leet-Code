@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    // Approach:- 1 | T.C:- O(n) | S.C:- O(h)
     int solve(TreeNode* root, bool isLeft) {
         if(root == nullptr) {
             return 0;
