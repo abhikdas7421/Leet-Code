@@ -1,22 +1,15 @@
 class Solution {
 public:
-    // Approach:- 2(Hair and Tortoise)
+    // Approach:- 1 (Sorting) | T.C:- O(nlogn)
     int findDuplicate(vector<int>& nums) {
-        int slow = nums[0];
-        int fast = nums[nums[0]];
-
-        // Detect cycle
-        while(slow != fast) {
-            slow = nums[slow];
-            fast = nums[nums[fast]];
+        sort(nums.begin(), nums.end());
+        
+        for(int i = 0; i < nums.size()-1; i++) {
+            if(nums[i] == nums[i+1]) {
+                return nums[i];
+            }
         }
-
-        slow = 0;
-        while(slow != fast) {
-            slow = nums[slow];
-            fast = nums[fast];
-        }
-
-        return slow;
+        
+        return -1;
     }
 };
