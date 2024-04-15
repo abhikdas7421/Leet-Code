@@ -3,7 +3,7 @@ public:
     string removeKdigits(string num, int k) {
         int n = num.size();
         
-        if(k == n) return "0";
+        if(n == k) return "0";
         
         string result = "";
         
@@ -17,7 +17,6 @@ public:
             if(!result.empty() || num[i] != '0') {
                 result.push_back(num[i]);
             }
-            
         }
         
         while(!result.empty() && k > 0) {
@@ -25,8 +24,6 @@ public:
             k--;
         }
         
-        
         return result.empty() ? "0" : result;
-        
     }
 };
