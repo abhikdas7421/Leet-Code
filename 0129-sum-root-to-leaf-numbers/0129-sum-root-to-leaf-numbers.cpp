@@ -11,51 +11,30 @@
  */
 class Solution {
 public:
-    // Approach 1
-    void dfs(TreeNode* root, string &str, int &ans) {
-        if(!root) return;
-        
-        str.push_back(root->val+'0');
-        
-        if(!root->left && !root->right) {
-            int path = stoi(str);
-            ans += path;
+    void solve(TreeNode* root, string currSum, int &sum) {
+        if(root == nullptr) {
+            return;
+            
         }
         
-        dfs(root->left, str, ans);
-        dfs(root->right, str, ans);
+        if(root->left == nullptr && root->right == nullptr) {
+            char ch = root->val+'0';
+            currSum += ch;
+            sum += stoi(currSum);
+            return;
+        }
         
-        str.pop_back();
+        char ch = root->val + '0';
+        solve(root->left, currSum+ch, sum);
+        solve(root->right, currSum+ch, sum);
+        
         
     }
     
     int sumNumbers(TreeNode* root) {
-        string str;
-        int ans = 0;
+        int sum = 0;
+        solve(root, "", sum);
         
-        dfs(root, str, ans);
-        return ans;
-        
-        
+        return sum;
     }
-    
-    // Approach 2
-    /*int dfs2(TreeNode* root, int ans) {
-        if(root == NULL) return 0;
-        
-        ans = ans*10 + root->val;
-        if(!root->left && !root->right) {
-            return ans;
-        }
-        
-        int left = dfs2(root->left, ans);
-        int right = dfs2(root->right, ans);
-        
-        return left+right;
-    }
-    
-    int sumNumbers(TreeNode* root) {
-        
-        return dfs2(root, 0);
-    }*/
 };
