@@ -30,14 +30,41 @@ public:
         nums1 = mergedArray;
     }*/
     
-    // Approach:- 2
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    // Approach:- 2 | T.C:- O((n+m)log(n+m)) | S.C:- O(1)
+    /*void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         
         for(int i = m; i < n+m; i++) {
             nums1[i] = nums2[i-m];
         }
         
         sort(nums1.begin(), nums1.end());
+    }*/
+    
+    // Approach:- 3
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m-1;
+        int j = n-1;
+        int k = (n+m)-1;
+        
+        while(i >= 0 && j >= 0) {
+            
+            if(nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                k--;
+                i--;
+            }
+            else {
+                nums1[k] = nums2[j];
+                k--;
+                j--;
+            }
+        }
+        
+        while(j >= 0) {
+            nums1[k] = nums2[j];
+            k--;
+            j--;
+        }
     }
     
 };
