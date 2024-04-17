@@ -1,7 +1,7 @@
 class Solution {
 public:
-    // Approach:- 1
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    // Approach:- 1 | T.C:- O(max(n, m)) | S.C:- O(n+m)
+    /*void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         vector<int> mergedArray;
         
         int i = 0, j = 0;
@@ -28,5 +28,16 @@ public:
         }
         
         nums1 = mergedArray;
+    }*/
+    
+    // Approach:- 2
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        for(int i = m; i < n+m; i++) {
+            nums1[i] = nums2[i-m];
+        }
+        
+        sort(nums1.begin(), nums1.end());
     }
+    
 };
