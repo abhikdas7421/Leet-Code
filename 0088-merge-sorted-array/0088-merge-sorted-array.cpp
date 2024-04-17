@@ -1,6 +1,6 @@
 class Solution {
 public:
-    // Approach:- 1 | T.C:- O(max(n, m)) | S.C:- O(n+m)
+    // Approach:- 1 | T.C:- O(m + n) | S.C:- O(m + n)
     /*void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         vector<int> mergedArray;
         
@@ -40,7 +40,7 @@ public:
         sort(nums1.begin(), nums1.end());
     }*/
     
-    // Approach:- 3
+    // Approach:- 3 | T.C:- O(m + n) | S.C:- O(1)
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         int i = m-1;
         int j = n-1;
@@ -49,21 +49,15 @@ public:
         while(i >= 0 && j >= 0) {
             
             if(nums1[i] > nums2[j]) {
-                nums1[k] = nums1[i];
-                k--;
-                i--;
+                nums1[k--] = nums1[i--];
             }
             else {
-                nums1[k] = nums2[j];
-                k--;
-                j--;
+                nums1[k--] = nums2[j--];
             }
         }
         
         while(j >= 0) {
-            nums1[k] = nums2[j];
-            k--;
-            j--;
+            nums1[k--] = nums2[j--];
         }
     }
     
