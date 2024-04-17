@@ -23,7 +23,7 @@ public:
         return nums[0];
     }*/
 
-    // Approach:- 3 (Hair and Tortoise)
+    // Approach:- 3 (Hair & Tortoise)
     int findDuplicate(vector<int>& nums) {
         int slow = nums[0];
         int fast = nums[nums[0]];
@@ -41,5 +41,6 @@ public:
         }
         
         return slow;
+    
     }
 };
