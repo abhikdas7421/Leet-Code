@@ -15,8 +15,7 @@ public:
     void dfs(TreeNode* root, string currStr, string &ans) {
         if(root == nullptr) return;
         
-        char ch = root->val+'a';
-        currStr = (ch) + currStr;
+        currStr = char(root->val+'a') + currStr;
         
         if(!root->left&& !root->right) {
             if(ans == "" || ans > currStr) {
