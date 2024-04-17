@@ -11,12 +11,14 @@
  */
 class Solution {
 public:
+    // Approach:- 1 | (Using DFS)
     void dfs(TreeNode* root, string currStr, string &ans) {
         if(root == nullptr) return;
+        
         char ch = root->val+'a';
         currStr = (ch) + currStr;
         
-        if(root->left == nullptr && root->right == nullptr) {
+        if(!root->left&& !root->right) {
             if(ans == "" || ans > currStr) {
                 ans = currStr;
             }
