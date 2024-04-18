@@ -1,27 +1,16 @@
 class Solution {
 public:
-    void maxProfitRE(vector<int>& prices, int i, int &minPrice, int &maxProfit) {
-        // Base case
-        if(i >= prices.size()) {
-            return;
-        }
-
-        // Let's solve 1 case
-        if(minPrice  > prices[i]) {
-            minPrice = prices[i];
-        }
-        maxProfit = max(maxProfit, prices[i]-minPrice);
-        
-        // RE
-        maxProfitRE(prices, i+1, minPrice, maxProfit);
-    }
-
     int maxProfit(vector<int>& prices) {
-        int minPrice = INT_MAX;
-        int maxProfit = INT_MIN;
-
-        maxProfitRE(prices, 0, minPrice, maxProfit);
-
-        return maxProfit;
+        int n = prices.size();
+        
+        int min_price = INT_MAX;
+        int max_profit = 0;
+        
+        for(int i = 0; i < n; i++) {
+            min_price = min(prices[i], min_price);
+            max_profit = max(prices[i]-min_price, max_profit);
+        }
+        
+        return max_profit;
     }
 };
