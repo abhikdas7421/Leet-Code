@@ -33,8 +33,6 @@ public:
                     }
                 }
             }
-            
-            cout << perimeter << endl;
         }
         
         return perimeter;
