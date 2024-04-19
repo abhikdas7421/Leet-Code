@@ -44,13 +44,11 @@ public:
         return maxArea;
     }*/
     
-    // Approach:- 2 (Using BFS)
-    
+    // Approach:- 2 (Using BFS) | T.C:- O(n*m) | S.C:- O(n*m)
     void bfs(vector<vector<int>>& grid, int i, int j, int& area) {
         int n = grid.size();
         int m = grid[0].size();
         
-        // int area = 0;
         
         queue<pair<int, int>> que;
         que.push({i, j});
