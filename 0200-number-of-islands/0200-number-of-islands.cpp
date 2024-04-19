@@ -38,7 +38,7 @@ public:
     }*/
     
     
-    // Approach:- 2 (Using BFS) | 
+    // Approach:- 2 (Using BFS) | T.C:- O(n*m) | S.C:- O(n*m)
     void bfs(vector<vector<char>>& grid, int i, int j) {
         int n = grid.size();
         int m = grid[0].size();
