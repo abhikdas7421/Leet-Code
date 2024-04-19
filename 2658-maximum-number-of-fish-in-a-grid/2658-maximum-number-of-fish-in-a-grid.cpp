@@ -3,7 +3,8 @@ public:
     int di[4] = {-1, 0, 0, 1};
     int dj[4] = {0, -1, 1, 0};
     
-    void bfs(vector<vector<int>>& grid, int i, int j, int& fish) {
+    // Approach:- 1 (Using BFS) | T.C:- O(n*m) | S.C:- O(n*m)
+    /*void bfs(vector<vector<int>>& grid, int i, int j, int& fish) {
         int n = grid.size();
         int m = grid[0].size();
         
@@ -55,7 +56,41 @@ public:
             }
         }
         
-        return maxFish;
+        return maxFish; 
+    }*/
+    
+    // Approach:- 2 (Using DFS) | T.C:- O(n*m) | S.C:- O(1)
+    void dfs(vector<vector<int>>& grid, int i, int j, int& fish) {
         
+        if(i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] <= 0) {
+            return;
+        }
+        
+        fish += grid[i][j];
+        grid[i][j] *= -1;
+        
+        for(int k = 0; k < 4; k++) {
+            dfs(grid, i+di[k], j+dj[k], fish);
+        }
+    }
+    
+    int findMaxFish(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        
+        int maxFish = 0;
+        
+        for(int i = 0; i < n; i++) {
+            
+            for(int j = 0; j < m; j++) {
+                if(grid[i][j] > 0) {
+                    int currFish = 0;
+                    dfs(grid, i, j, currFish);
+                    maxFish = max(maxFish, currFish);
+                }
+            }
+        }
+        
+        return maxFish;
     }
 };
