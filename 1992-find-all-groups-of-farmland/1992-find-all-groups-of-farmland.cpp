@@ -50,7 +50,7 @@ public:
         return ans;
     }*/
     
-    // Approach:- 2 (Using BFS)
+    // Approach:- 2 (Using BFS) | T.C:- O(n*m) | S.C:- O(n*m)
     void bfs(vector<vector<int>>& land, int i, int j, vector<int>& v) {
         int n = land.size();
         int m = land[0].size();
