@@ -74,6 +74,7 @@ public:
                     continue;
                 }
                 else if(land[pi][pj] == 1) {
+                    
                     if(v[0] >= pi && v[1] >= pj) {
                         v[0] = pi;
                         v[1] = pj;
@@ -97,10 +98,15 @@ public:
         vector<vector<int>> ans;
         
         for(int i = 0; i < n; i++) {
+            
             for(int j = 0; j < m; j++) {
+                
                 if(land[i][j] == 1) {
+                    
                     vector<int> v;
+                    
                     bfs(land, i, j, v);
+                    
                     ans.push_back(v);
                 }
             }
