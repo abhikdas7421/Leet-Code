@@ -63,33 +63,21 @@ public:
         int total_size = n+m;
         int mid = total_size/2;
         
-        int element1 = 0;
-        int element2 = 0;
+        int element1 = -1, element2 = -1;
         
         int i = 0, j = 0, k = 0;
         
         while(i < n && j < m) {
             
             if(nums1[i] < nums2[j]) {
-                
-                if(k == mid-1) {
-                    element1 = nums1[i];
-                }
-                
-                if(k == mid) {
-                    element2 = nums1[i];
-                }
+                if(k == mid-1) element1 = nums1[i];
+                if(k == mid) element2 = nums1[i];
                 
                 i++;
             }
             else  {
-                if(k == mid-1) {
-                    element1 = nums2[j];
-                }
-                
-                if(k == mid) {
-                    element2 = nums2[j];
-                }
+                if(k == mid-1) element1 = nums2[j];
+                if(k == mid) element2 = nums2[j];
                 
                 j++;
             }
@@ -98,36 +86,21 @@ public:
         }
         
         while(i < n) {
-            if(k == mid-1) {
-                    element1 = nums1[i];
-                }
-                
-            if(k == mid) {
-                element2 = nums1[i];
-            }
+            if(k == mid-1) element1 = nums1[i];
+            if(k == mid) element2 = nums1[i];
             
             i++;
             k++;
         }
         
         while(j < m) {
-            if(k == mid-1) {
-                    element1 = nums2[j];
-                }
-                
-            if(k == mid) {
-                element2 = nums2[j];
-            }
-                
+            if(k == mid-1) element1 = nums2[j];
+            if(k == mid) element2 = nums2[j]; 
+            
             j++;
             k++;
         }
         
-        if(total_size & 1 == 1) {
-            return element2;
-        }
-        else {
-            return (element1 + element2)/2.0;
-        }
+        return (total_size & 1) ? element2 : (element1 + element2)/2.0;
     }
 };
