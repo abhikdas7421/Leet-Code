@@ -1,21 +1,25 @@
 class Solution {
 public:
-    void twoSum(vector<int>& nums, int target, int i, int j, vector<vector<int>>& ans) {
+    void twoSum(vector<int>& nums, int si, int target, vector<vector<int>>& ans) {
+        int n = nums.size();
+        
+        int i = si;
+        int j = n-1;
+        
         while(i < j) {
-            if(nums[i]+nums[j] == target) {
-                
+            if(nums[i] + nums[j] == target) {
+                // handle duplicate
                 while(i < j && nums[i] == nums[i+1]) i++;
                 while(i < j && nums[j] == nums[j-1]) j--;
                 
                 ans.push_back({-target, nums[i], nums[j]});
-                
                 i++;
                 j--;
             }
-            else if(nums[i]+nums[j] > target) {
+            else if(nums[i] + nums[j] > target) {
                 j--;
             }
-            else if(nums[i]+nums[j] < target) {
+            else {
                 i++;
             }
         }
@@ -23,16 +27,13 @@ public:
     
     vector<vector<int>> threeSum(vector<int>& nums) {
         int n = nums.size();
-        vector<vector<int>> ans;
         
         sort(nums.begin(), nums.end());
+        vector<vector<int>> ans;
         
-        if(nums[0] > 0 || n < 3) {
-            return {};
-        }
+        if(nums[0] > 0) return ans;
         
         for(int i = 0; i < n-2; i++) {
-            
             if(nums[i] > 0) break;
             
             if(i != 0 && nums[i] == nums[i-1]) continue;
@@ -40,10 +41,9 @@ public:
             int n1 = nums[i];
             int target = -n1;
             
-            twoSum(nums, target, i+1, n-1, ans);
+            twoSum(nums, i+1, target, ans);
         }
         
         return ans;
-        
     }
 };
