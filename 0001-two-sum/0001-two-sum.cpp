@@ -5,8 +5,9 @@ public:
         unordered_map<int, int> mp;
         
         vector<int> ans;
+        
         for(int i = 0; i < n; i++) {
-            int x = target - nums[i];
+            int x = target-nums[i];
             
             if(mp.find(x) != mp.end()) {
                 ans.push_back(mp[x]);
@@ -15,7 +16,6 @@ public:
             }
             
             mp[nums[i]] = i;
-            
         }
         
         return ans;
