@@ -11,7 +11,7 @@ public:
             if(ans.empty() || ans.back()[1] < intervals[i][0]) {
                 ans.push_back(intervals[i]);
             }
-            else{
+            else{  // ans.back()[1] >= intervals[i][0]
                 ans.back()[0] = min(ans.back()[0], intervals[i][0]);
                 ans.back()[1] = max(ans.back()[1], intervals[i][1]);
             }
