@@ -1,28 +1,29 @@
 class Solution {
 public:
-    // Approach:- 1 (Variable size sliding window) | T.C:- O(n) | S.C:- O(n)
     int minSubArrayLen(int target, vector<int>& nums) {
         int n = nums.size();
         
         int i = 0;
         int j = 0;
         
-        int windowSum = 0;
-        int minLen = INT_MAX;
+        int sum = 0;
+        int minLen = n+1;
         
         while(j < n) {
-            windowSum += nums[j];
+            sum += nums[j];
             
-            while(i <= j && windowSum >= target) {
-                minLen = min(minLen, j-i+1);
+            while(sum >= target) {
+                int currLen = j-i+1;
+                minLen = min(minLen, currLen);
                 
-                windowSum -= nums[i];
+                sum -= nums[i];
                 i++;
             }
             
             j++;
         }
         
-        return (minLen == INT_MAX) ? 0 : minLen;
+        return (minLen == n+1) ? 0 : minLen;
+        
     }
 };
