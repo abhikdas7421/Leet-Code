@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Approach:- 1 | T.C:- O(n) | S.C:- O(n)
     int findMaxK(vector<int>& nums) {
         int n = nums.size();
         
