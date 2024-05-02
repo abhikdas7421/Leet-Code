@@ -60,8 +60,11 @@ public:
             if(arr[idx] == 1) {
                 result = max(result, abs(num));
             }
+            else {
+                arr[num+1000] = 1;
+            }
             
-            arr[num+1000] = 1;
+            
         }
         
         return result;
