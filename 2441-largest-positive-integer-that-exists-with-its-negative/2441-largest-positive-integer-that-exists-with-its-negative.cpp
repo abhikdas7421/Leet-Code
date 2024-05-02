@@ -1,7 +1,7 @@
 class Solution {
 public:
     // Approach:- 1 | T.C:- O(n) | S.C:- O(n)
-    int findMaxK(vector<int>& nums) {
+    /*int findMaxK(vector<int>& nums) {
         int n = nums.size();
         
         unordered_map<int, int> mp;
@@ -16,6 +16,31 @@ public:
             
             if(mp.find(-x) != mp.end()) {
                 ans = max(ans, abs(x));
+            }
+        }
+        
+        return ans;
+    }*/
+    
+    
+    int findMaxK(vector<int>& nums) {
+        int n = nums.size();
+        
+        sort(nums.begin(), nums.end());
+        
+        int i = 0, j = n-1;
+        int ans = -1;
+        
+        while(i < j) {
+            if( -nums[i] == nums[j]) {
+                ans = nums[j];
+                break;
+            }
+            else if(abs(nums[i]) > nums[j]) {
+                i++;
+            }
+            else {
+                j--;
             }
         }
         
