@@ -29,12 +29,10 @@ public:
         sort(nums.begin(), nums.end());
         
         int i = 0, j = n-1;
-        int ans = -1;
         
         while(i < j) {
             if(-nums[i] == nums[j]) {
-                ans = nums[j];
-                break;
+                return nums[j];
             }
             else if(abs(nums[i]) > nums[j]) {
                 i++;
@@ -44,6 +42,6 @@ public:
             }
         }
         
-        return ans;
+        return -1;
     }
 };
