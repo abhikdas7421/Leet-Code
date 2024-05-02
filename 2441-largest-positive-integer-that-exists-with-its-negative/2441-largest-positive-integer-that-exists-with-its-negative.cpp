@@ -22,7 +22,7 @@ public:
         return ans;
     }*/
     
-    
+    // Approach:- 2 | T.C:- O(nlog(n)) | S.C:- O(1)
     int findMaxK(vector<int>& nums) {
         int n = nums.size();
         
@@ -32,7 +32,7 @@ public:
         int ans = -1;
         
         while(i < j) {
-            if( -nums[i] == nums[j]) {
+            if(-nums[i] == nums[j]) {
                 ans = nums[j];
                 break;
             }
