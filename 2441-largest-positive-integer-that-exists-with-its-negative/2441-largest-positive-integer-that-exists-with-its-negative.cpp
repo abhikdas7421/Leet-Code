@@ -49,7 +49,7 @@ public:
     int findMaxK(vector<int>& nums) {
         int n = nums.size();
         
-        vector<int> arr(2001, 0);
+        int arr[2001] = {0};
         
         int result = -1;
         
