@@ -23,7 +23,7 @@ public:
     }*/
     
     // Approach:- 2 | T.C:- O(nlog(n)) | S.C:- O(1)
-    int findMaxK(vector<int>& nums) {
+    /*int findMaxK(vector<int>& nums) {
         int n = nums.size();
         
         sort(nums.begin(), nums.end());
@@ -43,5 +43,27 @@ public:
         }
         
         return -1;
+    }*/
+    
+    // Approach:- 3 | T.C:- O(n) | S.C:- O(1)
+    int findMaxK(vector<int>& nums) {
+        int n = nums.size();
+        
+        vector<int> arr(2001, 0);
+        
+        int result = -1;
+        
+        for(int i = 0; i < n; i++) {
+            int num = nums[i];
+            
+            int idx = -num+1000;
+            if(arr[idx] == 1) {
+                result = max(result, abs(num));
+            }
+            
+            arr[num+1000] = 1;
+        }
+        
+        return result;
     }
 };
