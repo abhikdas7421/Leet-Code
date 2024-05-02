@@ -1,42 +1,19 @@
 class Solution {
 public:
-    // T.C -> O(nlogn)
-    // S.C -> O(logn)
-    int maxSubArrayHelper(vector<int> &nums, int start, int end) {
-        // base case
-        if(start == end) return nums[start];
-        
-        int maxLeftBorderSum = INT_MIN, maxRightBorderSum = INT_MIN;
-        int mid = start + (end - start)/2;
-        
-        int maxLeftSum = maxSubArrayHelper(nums, start, mid);
-        int maxRightSum = maxSubArrayHelper(nums, mid+1, end);
-        
-        // Cross border sum
-        int leftBorderSum = 0, rightBorderSum = 0;
-        for(int i = mid; i >= start; i--) {
-            leftBorderSum += nums[i];
-            
-            if(leftBorderSum > maxLeftBorderSum) {
-                 maxLeftBorderSum = leftBorderSum;
-            }
-               
-        }
-        
-        for(int i = mid+1; i <= end; i++) {
-            rightBorderSum += nums[i];
-            
-            if(rightBorderSum > maxRightBorderSum) {
-                maxRightBorderSum = rightBorderSum;
-            }
-        }
-        
-        int crossBorderSum = maxLeftBorderSum + maxRightBorderSum;
-        
-        return max(crossBorderSum, max(maxLeftSum, maxRightSum));
-    }
-    
+    // Approach:- 1 (Kadane's Algorithm) | T.C:- O(n) | S.C:- O(1)
     int maxSubArray(vector<int>& nums) {
-        return maxSubArrayHelper(nums, 0, nums.size()-1);
+        int n = nums.size();
+        
+        int sum = 0;
+        int maxSum = INT_MIN;
+        
+        for(int i = 0; i < n; i++) {
+            sum += nums[i];
+            maxSum = max(sum, maxSum);
+            
+            if(sum < 0) sum = 0;
+        }
+        
+        return maxSum;
     }
 };
