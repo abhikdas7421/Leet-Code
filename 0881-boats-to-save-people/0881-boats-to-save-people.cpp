@@ -12,7 +12,7 @@ public:
         
         while(i <= j) {
             
-            if(people[j]+people[i] <= limit) {
+            if(i != j && people[j]+people[i] <= limit) {
                 i++;
             }
             
