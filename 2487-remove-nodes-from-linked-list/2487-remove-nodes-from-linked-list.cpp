@@ -29,10 +29,7 @@ public:
             current = st.top();
             st.pop();
             
-            if(current->val < maximum) {
-                continue;
-            }
-            else {
+            if(current->val >= maximum){
                 maximum = current->val;
                 ListNode* newHead = new ListNode(maximum);
                 newHead->next = resultHead;
